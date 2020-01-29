@@ -1,0 +1,146 @@
+@import 'normalize.css';
+
+:root {
+	font-size: 62.5%; /* 16px font size rem conversion*/
+}
+body {
+	margin:0;
+	padding:0;
+	text-align:center;
+	color:#3b4954;
+	background:#f9fbfd;
+	font-size: 1.6rem; /* 16px font size rem conversion*/
+	font-family: Arial, Helvetica, sans-serif;
+}
+.clear {
+	clear:both;
+}
+.hidden {
+	display:none;
+}
+.show {
+	display:inline-block;
+}
+.nav_wrapper, .main_wrapper {
+	display:inline-block;
+	width:100%;
+	margin:0 auto;
+	min-width:480px;
+	max-width:960px;
+	background:#fff;
+}
+@media only screen and (min-width: 960px)  {
+	.nav_wrapper, .main_wrapper {
+		width:960px;
+	}
+}
+.nav_wrapper {
+	margin-bottom:10px;
+	-webkit-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
+	-moz-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
+	box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
+}
+.nav_content ul {
+	margin:0;
+	padding:0;
+}
+.nav_content ul li {
+	list-style-type: none;
+	padding:10px 0 10px 0;
+	float:left;
+	width:200px;
+	border-right:1px solid #ddd;
+}
+.nav_content ul li a {
+	text-decoration:none;
+	color:#3b4954;
+	cursor:pointer;
+}
+.nav_content ul li a:hover {
+	color:#af0808;
+}
+.main_wrapper {
+	margin: 20px auto 20px auto;
+	background:#fff;
+	-webkit-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
+	-moz-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
+	box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
+}
+.main_content {
+	text-align:left;
+	margin:30px;
+}
+.main_content h2 {
+	text-align:center;
+	font-size:2.2rem;
+	padding:0 0 15px 0;
+	border-bottom:1px solid #ddd;
+	width:100%;
+}
+.main_content p {
+	text-align:center;
+	padding: 10px 50px 35px 50px;
+}
+.button {
+	border-radius: 25px;
+	padding:12px 25px;
+	color:#fff;
+	border: 0;
+}
+.button:focus {
+	outline:0;
+}
+.button:hover {
+	cursor:pointer;
+}
+.button_red {
+	background:#af0808;
+}
+.button_green {
+	background:#2dac0e;
+}
+.button_grey {
+	float:right;
+	text-align:right;
+	background:#c0c7cf;
+}
+.input_field {
+	border: 1px solid #dedede;
+	padding: 10px;
+}
+.hour_wrapper {
+	float:left;
+	width:100%;
+	margin-bottom:5px;
+}
+.hour_item, .input_item, .save_item {
+	padding:11px;
+}
+.hour {
+	float:left;
+	width:15%;
+	background:#ddd;
+}
+.hour_item {
+	text-align:right;
+}
+.input {
+	float:left;
+	width:70%;
+	background:#2dac0e;
+}
+.field { /* No padding surrounding the input field */
+	padding:0;
+}
+input.input_field {
+	width: 100%; /* Correct this */
+}
+.save {
+	float:left;
+	width:15%;
+	color:#fff;
+	text-align:center;
+}
+.save:hover {
+	cursor:pointer;
+}
