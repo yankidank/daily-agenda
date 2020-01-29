@@ -1,5 +1,6 @@
 
-const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+//const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
 var localValues = new Array(24);
 var storedValues = new Array(24);
 var saveStatus = false;
@@ -7,7 +8,7 @@ var saveStatus = false;
 //window.localStorage.clear();
 storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
-  storedValues = ['Sample 1', 'Sample 2', 'Sample 3', 'Sample 4','','','','','','','','','','','','','','','','','','','','']
+  storedValues = ['','','','','','','','','','Begin working','Work on presentation','Study new skill','Lunch break','','','','','','','','','','','']
   //console.log('no values stored yet')
   //console.log(storedValues)
 } else {
@@ -30,6 +31,8 @@ function renderHour(item, index) {
     storedValues.splice(index, 1, inputValue)
     //console.log(storedValues)
     localStorage.setItem("storedValues", JSON.stringify(storedValues))
+    saveStatus = true
+    return saveStatus
   }
   function saveFunction(){
     // Detect Save clicks 
@@ -48,9 +51,9 @@ function renderHour(item, index) {
   //console.log(saveStatus)
   $("#input_"+item).on("input", function() {
     //console.log(saveStatus + " : " + this.value);
-    $("#saveText_"+item).css( "background", "red" );
+    $("#saveText_"+item).css( "background", "#d62e2e" );
     if (saveFunction() === true){
-      $("#saveText_"+item).css( "background", "green" );
+      $("#saveText_"+item).css( "background", "#2dac0e" );
     }
   });
 

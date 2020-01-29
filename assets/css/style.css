@@ -94,7 +94,7 @@ body {
 	cursor:pointer;
 }
 .button_red {
-	background:#af0808;
+	background:#d62e2e;
 }
 .button_green {
 	background:#2dac0e;
@@ -127,7 +127,6 @@ body {
 .input {
 	float:left;
 	width:70%;
-	background:#2dac0e;
 }
 .field { /* No padding surrounding the input field */
 	padding:0;
