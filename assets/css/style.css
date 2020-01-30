@@ -134,6 +134,7 @@ body {
 .hour {
 	float:left;
 	width:18%;
+	color: #bbb;
 }
 .hour_num {
 	display:inline-block;
