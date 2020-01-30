@@ -170,3 +170,15 @@ body {
     height: 104px;
     margin: -32px 0 0 -27px;
 }
+#clearAgenda {
+	float:right;
+	width:100px;
+	background:#af0808;
+	padding:10px;
+	color:#fff;
+	margin-bottom:20px;
+	text-align:center;
+}
+#clearAgenda:hover{
+	cursor:pointer;
+}

@@ -1,23 +1,27 @@
-const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
-//const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
+//const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
 var localValues = new Array(24);
-var storedValues = new Array(24);
+var storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 var currentHour = Number(moment().format('H'));
-console.log(currentHour)
-var AMPM = ''
-
+var AMPM = '';
+var itemTwelve;
 
 $('h1').append(moment().format('dddd, MMMM Do'));
 
-//window.localStorage.clear();
+function clearAgenda(){
+  window.localStorage.clear();
+  location.reload();
+}
+
 storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
-  storedValues = ['','','','','','','','','','Begin working','Work on presentation','Study new skill','Lunch break','','','','','','','','','','','']
-  console.log('no values stored yet')
-  console.log(storedValues)
+   storedValues = Array.apply(0, Array(24)).map(function(){return '';});
+  //storedValues = ['','','','','','','','','','Begin working','Work on presentation','Study new skill','Lunch break','','','','','','','','','','','']
+  //console.log('no values stored yet')
+  //console.log(storedValues)
 } else {
-  console.log('values from localStorage')
-  console.log(storedValues)
+  //console.log('values from localStorage')
+  //console.log(storedValues)
 }
 
 hours.forEach(renderHour);
@@ -25,9 +29,19 @@ hours.forEach(renderHour);
 function renderHour(item, index) {
   var savedText = storedValues[item]
   //console.log(savedText)
+  if (item < 12){
+    AMPM = 'AM'
+  } else {
+    AMPM = 'PM'
+  }
+  if (item > 12){
+    itemTwelve = item - 12
+  } else {
+    itemTwelve = item
+  }
 
   // HTML for each hour
-  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_item">'+item+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
+  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_item">'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
 
   function savetoLocal(){
     // Assign input field value to a variable
@@ -67,7 +81,7 @@ function renderHour(item, index) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {
       savetoLocal();
-    }, 500);
+    }, 600);
   });
   // Check for manual save actions (button, enter)
   saveFunction()
@@ -80,7 +94,7 @@ function renderHour(item, index) {
       setTimeout(function(){
         $('#save_'+item).empty();
       }, 1000);
-    }, 1000);
+    }, 600);
   });
   /*
   // If the user clicks outside of the input, display checkmark on save
