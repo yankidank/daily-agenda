@@ -1,6 +1,5 @@
-
 //const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
-const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
+const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
 var localValues = new Array(24);
 var storedValues = new Array(24);
 var saveStatus = false;
@@ -9,11 +8,11 @@ var saveStatus = false;
 storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
   storedValues = ['','','','','','','','','','Begin working','Work on presentation','Study new skill','Lunch break','','','','','','','','','','','']
-  //console.log('no values stored yet')
-  //console.log(storedValues)
+  console.log('no values stored yet')
+  console.log(storedValues)
 } else {
-  //console.log('values from localStorage')
-  //console.log(storedValues)
+  console.log('values from localStorage')
+  console.log(storedValues)
 }
 
 hours.forEach(renderHour);
@@ -28,11 +27,10 @@ function renderHour(item, index) {
     // Assign input field value to a variable
     inputValue = $("#input_"+item).val()
     //console.log(inputValue + ' for ' +item)
-    storedValues.splice(index, 1, inputValue)
+    storedValues.splice(item, 1, inputValue)
     //console.log(storedValues)
     localStorage.setItem("storedValues", JSON.stringify(storedValues))
-    saveStatus = true
-    return saveStatus
+
   }
   function saveFunction(){
     // Detect Save clicks 
@@ -45,17 +43,16 @@ function renderHour(item, index) {
         savetoLocal()
       }
     });
-    return saveStatus
   }
   saveFunction()
   //console.log(saveStatus)
   $("#input_"+item).on("input", function() {
     //console.log(saveStatus + " : " + this.value);
     $("#saveText_"+item).css( "background", "#d62e2e" );
-    if (saveFunction() === true){
+    console.log(saveStatus)
+    if (saveStatus === true){
       $("#saveText_"+item).css( "background", "#2dac0e" );
     }
   });
 
 }
-

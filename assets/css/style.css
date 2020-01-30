@@ -104,41 +104,43 @@ body {
 	text-align:right;
 	background:#c0c7cf;
 }
+#calendar {
+	text-align: center;
+}
 .input_field {
 	border: 1px solid #dedede;
-	padding: 10px;
+	padding: 10px;	
+	min-width:300px;
 }
 .hour_wrapper {
-	float:left;
-	width:100%;
-	margin-bottom:5px;
+	display:inline-block;
+	width:50%;
+	margin: 0 auto 10px auto;
+	min-width:422px;
 }
 .hour_item, .input_item, .save_item {
 	padding:11px;
 }
 .hour {
 	float:left;
-	width:15%;
 	background:#ddd;
+	min-width:40px;
+
 }
 .hour_item {
 	text-align:right;
 }
 .input {
 	float:left;
-	width:70%;
 }
 .field { /* No padding surrounding the input field */
 	padding:0;
 }
-input.input_field {
-	width: 100%; /* Correct this */
-}
 .save {
 	float:left;
-	width:15%;
 	color:#fff;
 	text-align:center;
+	min-width:40px;
 }
 .save:hover {
 	cursor:pointer;
