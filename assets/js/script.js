@@ -75,4 +75,14 @@ function renderHour(item, index) {
         $("#saveText_"+item).css( "background", "#2dac0e" );
       }
   });
+
+  // Change the .input_field bg color based on the time of day
+/* 
+  if(item < 12){
+    console.log('less than 12')
+    $("#input_"+item).css( "background", "#2dac0e" );
+  } else {
+    console.log('not less than 12')
+  }
+   */
 }
