@@ -60,6 +60,10 @@ function renderHour(item, index) {
   } else {
     itemTwelve = item
   }
+  if (itemTwelve == 0){
+    itemTwelve = 12
+  }
+  console.log(itemTwelve)
   // HTML for each hour
   $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_num"><div class="hour_item"></div>'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
   function savetoLocal(){
