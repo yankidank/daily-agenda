@@ -2,7 +2,6 @@ const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '1
 //const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
 var localValues = new Array(24);
 var storedValues = new Array(24);
-var saveStatus = false;
 var currentHour = Number(moment().format('H'));
 console.log(currentHour)
 var AMPM = ''
@@ -28,8 +27,8 @@ function renderHour(item, index) {
   //console.log(savedText)
 
   // HTML for each hour
-  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_item">'+item+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item button_green" id="saveText_'+item+'">Save</div></div></div>');
-  
+  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_item">'+item+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
+
   function savetoLocal(){
     // Assign input field value to a variable
     inputValue = $("#input_"+item).val()
@@ -39,54 +38,71 @@ function renderHour(item, index) {
     localStorage.setItem("storedValues", JSON.stringify(storedValues))
   }
   function saveFunction(){
+    /* 
     // Detect Save clicks 
     $( "#save_"+item ).click(function() {
       savetoLocal()
-      $("#saveText_"+item).css( "background", "#2dac0e" );
+      $('#save_'+item).empty();
+      $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+      setTimeout(function(){
+        $('#save_'+item).empty();
+      }, 1000);
     });
+     */
     // Detect input field submit (enter on keyboard)
     $("#input_"+item ).on('keyup', function (e) {
       if (e.keyCode === 13) {
         savetoLocal()
-        $("#saveText_"+item).css( "background", "#2dac0e" );
-        //$("#save_"+item).css( "background-image", "url('./assets/img/checkmark.gif')" )
+        $('#save_'+item).empty();
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+        setTimeout(function(){
+          $('#save_'+item).empty();
+        }, 1000);
       }
     });
   }
-  // Save automatically less than 1 second after typing
+  // Save automatically
   var timeoutId;
   $('.input_field').on('input propertychange change', function() {
-    console.log('changed')
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {
       savetoLocal();
-    }, 750);
+    }, 500);
   });
-  // Check for manual save actions
+  // Check for manual save actions (button, enter)
   saveFunction()
-  // Change the save button BG color
   $("#input_"+item).on("input", function() {
-    $("#saveText_"+item).css( "background", "#d62e2e" );
+    savetoLocal();
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {
-      $("#saveText_"+item).css( "background", "#2dac0e" );
-    }, 750);
-    saveStatus = false
+      $('#save_'+item).empty();
+      $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+      setTimeout(function(){
+        $('#save_'+item).empty();
+      }, 1000);
+    }, 1000);
   });
-  // If the user clicks outside of the input, change the button to green
+  /*
+  // If the user clicks outside of the input, display checkmark on save
   $(document).mouseup(function(e){
+    
       var container = $(".input_field");
       if (!container.is(e.target) && container.has(e.target).length === 0) 
       {
-        $("#saveText_"+item).css( "background", "#2dac0e" );
+        $('#save_'+item).empty();
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+        setTimeout(function(){
+          $('#save_'+item).empty();
+        }, 1000);
       }
-  });
+  }); 
+  */
 
   if(item < currentHour){
     $("#input_"+item).css( "background", "rgb(250, 250, 249)" );
     $("#input_"+item).css( "color", "rgb(183, 183, 183)" );
   } else if(item <= currentHour){
-    $("#hour_"+item+" .hour_item").css( "background", "rgb(45, 172, 14)" );
+    $("#hour_"+item+" .hour_item").css( "background", "rgb(0, 211, 119)" );
     $("#hour_"+item+" .hour_item").css( "border-radius", "50%" );
     $("#hour_"+item+" .hour_item").css( "float", "right" );
     $("#hour_"+item+" .hour_item").css( "color", "#FFF" );
