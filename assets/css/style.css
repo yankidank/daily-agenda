@@ -10,7 +10,7 @@ body {
 	color:#3b4954;
 	background:#f9fbfd;
 	font-size: 1.6rem; /* 16px font size rem conversion*/
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Lato', sans-serif;
 }
 .clear {
 	clear:both;
@@ -77,13 +77,13 @@ body {
 }
 .main_content h2 {
     text-align: center;
-    color: #bbb;
-    font-size: 1.8rem;
+	color: #bbb;
+    font-size: 1.6rem;
     font-weight: 400;
     text-transform: uppercase;
     padding: 0 0 15px 0;
     width: 100%;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.3rem;
 }
 .main_content p {
 	text-align:center;
@@ -147,8 +147,8 @@ body {
 	float:left;
 	border-top:1px solid #ddd;
 }
-.field { /* No padding surrounding the input field */
-	padding:0;
+.field {
+	padding: 0 0 0 1%;
 }
 .save {
 	float:left;
@@ -159,4 +159,8 @@ body {
 }
 .save:hover {
 	cursor:pointer;
+}
+.save:active {
+	color:#ddd;
+	cursor:wait;
 }
