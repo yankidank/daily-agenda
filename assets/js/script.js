@@ -22,6 +22,8 @@ function dayPrev(){
   if (storedValues === null){
     storedValues = Array.apply(0, Array(24)).map(function(){return '';});
   }
+  $("#calendar").hide()
+  $("#calendar").fadeIn(250)
   hours.forEach(renderHour);
 }
 function dayNext(){
@@ -31,6 +33,8 @@ function dayNext(){
   if (storedValues === null){
     storedValues = Array.apply(0, Array(24)).map(function(){return '';});
   }
+  $("#calendar").hide()
+  $("#calendar").fadeIn(250)
   hours.forEach(renderHour);
 }
 storedValues = JSON.parse(window.localStorage.getItem("day_"+currentDayOfYear))
