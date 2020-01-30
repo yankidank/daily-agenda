@@ -121,7 +121,8 @@ body {
     padding: 11px 1%;
 }
 .hour_wrapper {
-	display:inline-block;
+	display:block;
+	float:left;
 	width:100%;
 	margin: 0;
 	min-width:422px;

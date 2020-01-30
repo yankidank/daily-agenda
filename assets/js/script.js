@@ -1,8 +1,13 @@
-//const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
-const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
+const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+//const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
 var localValues = new Array(24);
 var storedValues = new Array(24);
 var saveStatus = false;
+var currentHour = Number(moment().format('H'));
+console.log(currentHour)
+//var currentHour = 10
+var AMPM = ''
+
 
 $('h1').append(moment().format('dddd, MMMM Do'));
 
@@ -71,20 +76,20 @@ function renderHour(item, index) {
   // If the user clicks outside of the input, change the button to green
   $(document).mouseup(function(e){
       var container = $(".input_field");
-      console.log('hi')
       if (!container.is(e.target) && container.has(e.target).length === 0) 
       {
         $("#saveText_"+item).css( "background", "#2dac0e" );
       }
   });
 
-  // Change the .input_field bg color based on the time of day
-/* 
-  if(item < 12){
-    console.log('less than 12')
-    $("#input_"+item).css( "background", "#2dac0e" );
-  } else {
-    console.log('not less than 12')
+  if(item < currentHour){
+    $("#input_"+item).css( "background", "rgb(250, 250, 249)" );
+    $("#input_"+item).css( "color", "rgb(183, 183, 183)" );
+  } else if(item = currentHour){
+    $("#hour_"+item+" .hour_item").css( "background", "rgb(45, 172, 14)" );
+    $("#hour_"+item+" .hour_item").css( "border-radius", "50%" );
+    $("#hour_"+item+" .hour_item").css( "float", "right" );
+    $("#hour_"+item+" .hour_item").css( "color", "#FFF" );
+    $("#hour_"+item+" .hour_item").css( "font-weight", "bold" );
   }
-   */
 }
