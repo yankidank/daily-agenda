@@ -208,11 +208,13 @@ h2 {
 	float:right;
 	width:100px;
 	background:#af0808;
-	padding:10px;
+	padding:9px 12px 10px 12px;
 	color:#fff;
 	margin:10px 0 25px 0;
 	text-align:center;
+	border-radius: 25px;
 }
 #clearAgenda:hover{
 	cursor:pointer;
+	color:#ddd;
 }
