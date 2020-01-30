@@ -18,14 +18,22 @@ function clearAgenda(){
 function dayPrev(){
   newDayOfYear = newDayOfYear - 1
   $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
+  storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
+  if (storedValues === null){
+    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
+  }
   hours.forEach(renderHour);
 }
 function dayNext(){
   newDayOfYear = newDayOfYear + 1
   $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
+  storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
+  if (storedValues === null){
+    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
+  }
   hours.forEach(renderHour);
 }
-storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
+storedValues = JSON.parse(window.localStorage.getItem("day_"+currentDayOfYear))
 //console.log(storedValues)
 //storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
@@ -99,11 +107,11 @@ function renderHour(item, index) {
       }, 1000);
     }
   });  */
-  if(item < currentHour){
+  if(item < currentHour && newDayOfYear === currentDayOfYear || newDayOfYear < currentDayOfYear){
     // Change the input field background color if the time has passed
     $("#input_"+item).css( "background", "rgb(250, 250, 249)" );
     $("#input_"+item).css( "color", "rgb(183, 183, 183)" );
-  } else if(item <= currentHour){
+  } else if(item <= currentHour && currentDayOfYear === newDayOfYear){
     // Display an indicator icon next to the current hour
     $("#hour_"+item+" .hour_item").css( "background", "rgb(0, 211, 119)" );
     $("#hour_"+item+" .hour_item").css( "border-radius", "50%" );
