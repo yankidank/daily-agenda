@@ -46,14 +46,14 @@ function renderHour(item, index) {
       }
     });
   }
-  // Save automatically 1 second after typing
+  // Save automatically less than 1 second after typing
   var timeoutId;
   $('.input_field').on('input propertychange change', function() {
     console.log('changed')
     clearTimeout(timeoutId);
     timeoutId = setTimeout(function() {
       savetoLocal();
-    }, 1000);
+    }, 750);
   });
   // Check for manual save actions
   saveFunction()
