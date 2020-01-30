@@ -11,4 +11,6 @@ Day planner that lets you set an hourly agenda for the work day.
 
 https://yankidank.github.io/daily-agenda/
 
+![Screenshot](./assets/img/screenshot.png)
+
 Uses [jQuery 3.4.1](https://code.jquery.com/)
