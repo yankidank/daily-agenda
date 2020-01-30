@@ -133,14 +133,14 @@ body {
 }
 .hour {
 	float:left;
-	width:10%;
+	width:17%;
 
 }
 .hour_item {
 	text-align:right;
 }
 .input {
-	width:80%;
+	width:69%;
 	float:left;
 	border-top:1px solid #ddd;
 }
@@ -150,7 +150,7 @@ body {
 .save {
 	float:left;
 	text-align:center;
-	width:10%;
+	width:14%;
 }
 .save:hover {
 	cursor:pointer;
@@ -176,7 +176,7 @@ body {
 	background:#af0808;
 	padding:10px;
 	color:#fff;
-	margin-bottom:20px;
+	margin:10px 0 25px 0;
 	text-align:center;
 }
 #clearAgenda:hover{
