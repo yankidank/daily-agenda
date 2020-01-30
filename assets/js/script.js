@@ -4,6 +4,8 @@ var localValues = new Array(24);
 var storedValues = new Array(24);
 var saveStatus = false;
 
+$('h1').append(moment().format('dddd, MMMM Do'));
+
 //window.localStorage.clear();
 storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
