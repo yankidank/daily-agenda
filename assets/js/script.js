@@ -1,10 +1,14 @@
 //const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
 const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
-var localValues = new Array(24);
 var storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 var currentHour = Number(moment().format('H'));
+var currentDayOfYear = moment().dayOfYear();
+var nextDayOfYear;
+var prevDayOfYear;
 var AMPM = '';
 var itemTwelve;
+var dayTrackPrev;
+var dayTrackNext;
 $('h1').append(moment().format('dddd, MMMM Do'));
 function clearAgenda(){
   window.localStorage.clear();
@@ -14,6 +18,37 @@ storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 }
+if (currentDayOfYear < 365) { // Ignoring leap years
+  nextDayOfYear = currentDayOfYear + 1
+  prevDayOfYear = currentDayOfYear - 1
+} else {
+  nextDayOfYear = 1
+  prevDayOfYear = 365
+}
+
+function dayPrev(){
+  if (dayTrackPrev === undefined){
+    dayTrackPrev = 1
+    dayTrackNext = dayTrackPrev - 1
+    $('h1').html(moment().subtract(dayTrackNext, 'days').format('dddd, MMMM Do'));
+  } else {
+    dayTrackPrev = dayTrackPrev + 1
+    dayTrackNext = dayTrackPrev - 1
+    $('h1').html(moment().subtract(dayTrackNext, 'days').format('dddd, MMMM Do'));
+  }
+}
+function dayNext(){
+  if (dayTrackPrev === undefined){
+    dayTrackPrev = 0
+    dayTrackNext = dayTrackPrev + 1
+    $('h1').html(moment().subtract(dayTrackPrev, 'days').format('dddd, MMMM Do'));
+  } else {
+    dayTrackPrev = dayTrackPrev - 1
+    dayTrackNext = dayTrackPrev + 1
+    $('h1').html(moment().subtract(dayTrackPrev, 'days').format('dddd, MMMM Do'));
+  }
+}
+
 hours.forEach(renderHour);
 function renderHour(item, index) {
   var savedText = storedValues[item]
