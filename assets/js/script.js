@@ -16,6 +16,7 @@ if (storedValues === null){
 }
 
 hours.forEach(renderHour);
+
 function renderHour(item, index) {
   var savedText = storedValues[item]
   //console.log(savedText)
@@ -30,29 +31,42 @@ function renderHour(item, index) {
     storedValues.splice(item, 1, inputValue)
     //console.log(storedValues)
     localStorage.setItem("storedValues", JSON.stringify(storedValues))
-
   }
   function saveFunction(){
     // Detect Save clicks 
     $( "#save_"+item ).click(function() {
       savetoLocal()
+      $("#saveText_"+item).css( "background", "#2dac0e" );
     });
     // Detect input field submit (enter on keyboard)
     $("#input_"+item ).on('keyup', function (e) {
       if (e.keyCode === 13) {
         savetoLocal()
+        $("#saveText_"+item).css( "background", "#2dac0e" );
       }
     });
   }
-  saveFunction()
-  //console.log(saveStatus)
-  $("#input_"+item).on("input", function() {
-    //console.log(saveStatus + " : " + this.value);
-    $("#saveText_"+item).css( "background", "#d62e2e" );
-    console.log(saveStatus)
-    if (saveStatus === true){
-      $("#saveText_"+item).css( "background", "#2dac0e" );
-    }
+  // Save automatically 1 second after typing
+  var timeoutId;
+  $('.input_field').on('input propertychange change', function() {
+    console.log('changed')
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(function() {
+      savetoLocal();
+    }, 1000);
   });
-
+  // Check for manual save actions
+  saveFunction()
+  // Change the save button BG color
+  $("#input_"+item).on("input", function() {
+    $("#saveText_"+item).css( "background", "#d62e2e" );
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(function() {
+      $("#saveText_"+item).css( "background", "#2dac0e" );
+    }, 750);
+    saveStatus = false
+  });
+  
 }
+
+
