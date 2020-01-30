@@ -12,8 +12,11 @@ var dayTrackPrev;
 var dayTrackNext;
 $('h1').append(moment().format('dddd, MMMM Do'));
 function clearAgenda(){
-  window.localStorage.clear();
-  location.reload();
+  var removeAgenda = confirm("Are you sure that you want to remove all agenda items?");
+  if (removeAgenda == true) {
+    window.localStorage.clear();
+    location.reload();
+  }
 }
 function dayPrev(){
   newDayOfYear = newDayOfYear - 1
