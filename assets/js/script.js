@@ -66,7 +66,13 @@ function renderHour(item, index) {
     }, 750);
     saveStatus = false
   });
-  
+  // If the user clicks outside of the input, change the button to green
+  $(document).mouseup(function(e){
+      var container = $(".input_field");
+      console.log('hi')
+      if (!container.is(e.target) && container.has(e.target).length === 0) 
+      {
+        $("#saveText_"+item).css( "background", "#2dac0e" );
+      }
+  });
 }
-
-
