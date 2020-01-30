@@ -34,15 +34,11 @@ function dayNext(){
   hours.forEach(renderHour);
 }
 storedValues = JSON.parse(window.localStorage.getItem("day_"+currentDayOfYear))
-//console.log(storedValues)
-//storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 }
 hours.forEach(renderHour);
 function renderHour(item, index) {
-  console.log(newDayOfYear)
-
   if (index === 0){
     $('#calendar').empty();
   }
@@ -62,7 +58,6 @@ function renderHour(item, index) {
   function savetoLocal(){
     inputValue = $("#input_"+item).val()
     storedValues.splice(item, 1, inputValue)
-    //localStorage.setItem("storedValues", JSON.stringify(storedValues))
     localStorage.setItem("day_"+newDayOfYear, JSON.stringify(storedValues))
   }
   // Save input automatically

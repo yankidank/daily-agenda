@@ -75,15 +75,40 @@ body {
     text-align: center;
 	margin: 0;
 }
-.main_content h2 {
+#agendaWrapper {
+	width:100%;
+}
+#agendaWrapper a:hover {
+	cursor:pointer;
+}
+#dayPrev {
+	float:left;
+	display:inline;
+	text-align:center;
+	width:10%;
+	opacity:0.15;
+	margin-top:-20px;
+}
+#dayNext {
+	float:left;
+	display:inline;
+	text-align:center;
+	width:10%;
+	opacity:0.15;
+	margin-top:-20px;
+}
+#agendaTitle {
+	float:left;
+	width:80%;
+	display:inline;
+}
+h2 {
     text-align: center;
 	color: #bbb;
     font-size: 1.6rem;
     font-weight: 400;
     text-transform: uppercase;
-    padding: 0 0 15px 0;
-    width: 100%;
-    letter-spacing: 0.3rem;
+	letter-spacing: 0.3rem;
 }
 .main_content p {
 	text-align:center;

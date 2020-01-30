@@ -13,11 +13,13 @@
 		<div class="main_wrapper">
 			<div class="main_content" id="main_intro">
 				<h1></h1>
-				<h2>Daily Agenda</h2>
+				<div id="agendaWrapper">
+					<div id="dayPrev"><a onclick="dayPrev()"><img src="./assets/img/left.svg" alt="<" /></a></div>
+					<div id="agendaTitle"><h2>Daily Agenda</h2></div>
+					<div id="dayNext"><a onclick="dayNext()"><img src="./assets/img/right.svg" alt=">" /></a></div>
+				</div>
 				<div id="calendar"></div>
 				<div class="clear"></div>
-				<a onclick="dayPrev()"><i class="previous">prev</i></a>
-				<a onclick="dayNext()"><i class="next">next</i></a>
 				<div id="clearAgenda"><a onclick="clearAgenda()">Clear Agenda</a></div>
 			</div>
 		</div>
