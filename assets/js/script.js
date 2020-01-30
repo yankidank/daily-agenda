@@ -5,7 +5,6 @@ var storedValues = new Array(24);
 var saveStatus = false;
 var currentHour = Number(moment().format('H'));
 console.log(currentHour)
-//var currentHour = 10
 var AMPM = ''
 
 
@@ -50,6 +49,7 @@ function renderHour(item, index) {
       if (e.keyCode === 13) {
         savetoLocal()
         $("#saveText_"+item).css( "background", "#2dac0e" );
+        //$("#save_"+item).css( "background-image", "url('./assets/img/checkmark.gif')" )
       }
     });
   }
@@ -85,7 +85,7 @@ function renderHour(item, index) {
   if(item < currentHour){
     $("#input_"+item).css( "background", "rgb(250, 250, 249)" );
     $("#input_"+item).css( "color", "rgb(183, 183, 183)" );
-  } else if(item = currentHour){
+  } else if(item <= currentHour){
     $("#hour_"+item+" .hour_item").css( "background", "rgb(45, 172, 14)" );
     $("#hour_"+item+" .hour_item").css( "border-radius", "50%" );
     $("#hour_"+item+" .hour_item").css( "float", "right" );
