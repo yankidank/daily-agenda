@@ -3,6 +3,7 @@ const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'];
 var storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 var currentHour = Number(moment().format('H'));
 var currentDayOfYear = moment().dayOfYear();
+var newDayOfYear = currentDayOfYear;
 var nextDayOfYear;
 var prevDayOfYear;
 var AMPM = '';
@@ -14,43 +15,29 @@ function clearAgenda(){
   window.localStorage.clear();
   location.reload();
 }
-storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
+function dayPrev(){
+  newDayOfYear = newDayOfYear - 1
+  $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
+  hours.forEach(renderHour);
+}
+function dayNext(){
+  newDayOfYear = newDayOfYear + 1
+  $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
+  hours.forEach(renderHour);
+}
+storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
+//console.log(storedValues)
+//storedValues = JSON.parse(window.localStorage.getItem("storedValues"))
 if (storedValues === null){
    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 }
-if (currentDayOfYear < 365) { // Ignoring leap years
-  nextDayOfYear = currentDayOfYear + 1
-  prevDayOfYear = currentDayOfYear - 1
-} else {
-  nextDayOfYear = 1
-  prevDayOfYear = 365
-}
-
-function dayPrev(){
-  if (dayTrackPrev === undefined){
-    dayTrackPrev = 1
-    dayTrackNext = dayTrackPrev - 1
-    $('h1').html(moment().subtract(dayTrackNext, 'days').format('dddd, MMMM Do'));
-  } else {
-    dayTrackPrev = dayTrackPrev + 1
-    dayTrackNext = dayTrackPrev - 1
-    $('h1').html(moment().subtract(dayTrackNext, 'days').format('dddd, MMMM Do'));
-  }
-}
-function dayNext(){
-  if (dayTrackPrev === undefined){
-    dayTrackPrev = 0
-    dayTrackNext = dayTrackPrev + 1
-    $('h1').html(moment().subtract(dayTrackPrev, 'days').format('dddd, MMMM Do'));
-  } else {
-    dayTrackPrev = dayTrackPrev - 1
-    dayTrackNext = dayTrackPrev + 1
-    $('h1').html(moment().subtract(dayTrackPrev, 'days').format('dddd, MMMM Do'));
-  }
-}
-
 hours.forEach(renderHour);
 function renderHour(item, index) {
+  console.log(newDayOfYear)
+
+  if (index === 0){
+    $('#calendar').empty();
+  }
   var savedText = storedValues[item]
   if (item < 12){
     AMPM = 'AM'
@@ -67,7 +54,8 @@ function renderHour(item, index) {
   function savetoLocal(){
     inputValue = $("#input_"+item).val()
     storedValues.splice(item, 1, inputValue)
-    localStorage.setItem("storedValues", JSON.stringify(storedValues))
+    //localStorage.setItem("storedValues", JSON.stringify(storedValues))
+    localStorage.setItem("day_"+newDayOfYear, JSON.stringify(storedValues))
   }
   // Save input automatically
   var timeoutId;
