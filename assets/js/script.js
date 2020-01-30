@@ -41,7 +41,7 @@ function renderHour(item, index) {
   }
 
   // HTML for each hour
-  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_item">'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
+  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_num"><div class="hour_item"></div>'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
 
   function savetoLocal(){
     // Assign input field value to a variable
@@ -118,7 +118,6 @@ function renderHour(item, index) {
   } else if(item <= currentHour){
     $("#hour_"+item+" .hour_item").css( "background", "rgb(0, 211, 119)" );
     $("#hour_"+item+" .hour_item").css( "border-radius", "50%" );
-    $("#hour_"+item+" .hour_item").css( "float", "right" );
     $("#hour_"+item+" .hour_item").css( "color", "#FFF" );
     $("#hour_"+item+" .hour_item").css( "font-weight", "bold" );
   }

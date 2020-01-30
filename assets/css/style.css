@@ -127,25 +127,32 @@ body {
 	margin: 0;
 	min-width:422px;
 }
-.hour_item, .input_item {
+.input_item {
 	padding:11px;
 	color: #bbb;
 }
 .hour {
 	float:left;
-	width:17%;
-
+	width:18%;
 }
-.hour_item {
+.hour_num {
+	display:inline-block;
+	margin-left: -8px;
+	width:100%;
 	text-align:right;
 }
+.hour_item {
+	display:inline-block;
+	padding: 10px;
+	margin: 12px 5px -5px 0;
+}
 .input {
-	width:69%;
+	width:68%;
 	float:left;
 	border-top:1px solid #ddd;
 }
 .field {
-	padding: 0 0 0 1%;
+	padding: 0;
 }
 .save {
 	float:left;
