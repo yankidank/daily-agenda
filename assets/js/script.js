@@ -95,7 +95,9 @@ function renderHour(item, index) {
     savetoLocal();
     clearTimeout(timeoutId);
     $('#save_'+item).empty();
+    $('#save_'+item).prepend('<div class="checkWrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>')
     timeoutId = setTimeout(function() {
+      $('#save_'+item).empty();
       $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
       setTimeout(function(){
         $('#save_'+item).empty();
