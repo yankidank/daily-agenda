@@ -104,17 +104,17 @@ function renderHour(item, index) {
       }, 1000);
     }, 700);
   });
-  // If the user clicks outside of the input, display checkmark on save
-/*   $(document).mouseup(function(e){
+  // If the user clicks outside of the input, hide the type/save indicator
+  $(document).mouseup(function(e){
     var container = $("#input_"+item);
     if (!container.is(e.target) && container.has(e.target).length === 0){
       $('#save_'+item).empty();
-      $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
-      setTimeout(function(){
-        $('#save_'+item).empty();
-      }, 1000);
     }
-  });  */
+  });
+  // If the user tabs outside of the input, hide the type/save indicator
+  $("#input_"+item).blur("input", function() {
+    $('#save_'+item).empty();
+  });
   if(item < currentHour && newDayOfYear === currentDayOfYear || newDayOfYear < currentDayOfYear){
     // Change the input field background color if the time has passed
     $("#input_"+item).css( "background", "rgb(250, 250, 249)" );
