@@ -11,15 +11,16 @@ var itemTwelve;
 var dayTrackPrev;
 var dayTrackNext;
 $('h1').append(moment().format('dddd, MMMM Do'));
+$('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+"  Agenda</a>");
 function clearAgenda(){
-  var removeAgenda = confirm("Are you sure that you want to remove all agenda items?");
+  var removeAgenda = confirm("Are you sure that you want to remove all agenda items from your calendar?");
   if (removeAgenda == true) {
     window.localStorage.clear();
     location.reload();
   }
 }
-function dayPrev(){
-  newDayOfYear = newDayOfYear - 1
+function dayRender(){
+  $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+"  Agenda</a>");
   $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
   storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
   if (storedValues === null){
@@ -29,16 +30,35 @@ function dayPrev(){
   $("#calendar").fadeIn(250)
   hours.forEach(renderHour);
 }
+$(function () {
+  $("#day").change(function () {
+    //var selectedText = $(this).find("option:selected").text()
+    var selectedValue = Number($(this).val())
+    if (selectedValue === 0){
+      newDayOfYear = currentDayOfYear
+    } else {
+      newDayOfYear = newDayOfYear + selectedValue
+    }
+    dayRender()
+  });
+});
+function dayChange(n){
+  if (currentDayOfYear !== newDayOfYear){
+    if (n === 0){
+      newDayOfYear = currentDayOfYear
+    } else {
+      newDayOfYear = newDayOfYear + n
+    }
+    dayRender()
+  }
+}
+function dayPrev(){
+  newDayOfYear = newDayOfYear - 1
+  dayRender()
+}
 function dayNext(){
   newDayOfYear = newDayOfYear + 1
-  $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
-  storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
-  if (storedValues === null){
-    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
-  }
-  $("#calendar").hide()
-  $("#calendar").fadeIn(250)
-  hours.forEach(renderHour);
+  dayRender()
 }
 storedValues = JSON.parse(window.localStorage.getItem("day_"+currentDayOfYear))
 if (storedValues === null){
@@ -63,7 +83,6 @@ function renderHour(item, index) {
   if (itemTwelve == 0){
     itemTwelve = 12
   }
-  console.log(itemTwelve)
   // HTML for each hour
   $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_num"><div class="hour_item"></div>'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
   function savetoLocal(){

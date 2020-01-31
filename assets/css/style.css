@@ -69,6 +69,7 @@ body {
 .main_content {
 	text-align:left;
 	margin:30px;
+	padding-bottom: 50px;
 }
 .main_content h1 {
 	font-size: 1.8em;
@@ -80,6 +81,16 @@ body {
 }
 #agendaWrapper a:hover {
 	cursor:pointer;
+}
+#day {
+	margin-right:5px;
+	padding:10px 5px 10px 10px;
+	display:inline;
+	float:right;
+	background:none;
+	border:none;
+}
+#day option {
 }
 #dayPrev {
 	float:left;
@@ -110,6 +121,16 @@ h2 {
     font-weight: 400;
     text-transform: uppercase;
 	letter-spacing: 0.3rem;
+}
+h3 {
+    margin: 10px 20px;
+    padding: 0;
+	font-size: 1.8rem;
+	font-weight:600;
+    float: left;
+}
+.nav_content h3 a:hover {
+	cursor:pointer;
 }
 .main_content p {
 	text-align:center;
@@ -205,18 +226,14 @@ h2 {
     margin: -32px 0 0 -27px;
 }
 #clearAgenda {
-	float:right;
-	width:100px;
-	background:#af0808;
-	padding:9px 12px 10px 12px;
-	color:#fff;
-	margin:10px 0 25px 0;
-	text-align:center;
-	border-radius: 25px;
+	float: right;
+    padding: 9px 2px 9px 2px;
+    margin: 2px 10px 0px 0;
+    font-size: 1.6rem;
 }
 #clearAgenda:hover{
 	cursor:pointer;
-	color:#ddd;
+	color:rgb(187, 0, 0);
 }
 .lds-ring {
 	display: inline;
