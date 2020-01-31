@@ -87,19 +87,19 @@ body {
 }
 #clock {
 	margin-right:10px;
-	padding:13px 5px 10px 2px;
+	padding:13px 5px 13px 2px;
 	float:right;
 }
 #mode {
 	margin-right:5px;
-	padding:11px 5px 12px 10px;
+	padding:11px 5px 13px 10px;
 	float:right;
 	background:none;
 	border:none;
 }
 #day {
 	margin-right:5px;
-	padding:11px 5px 12px 10px;
+	padding:11px 5px 13px 10px;
 	float:right;
 	background:none;
 	border:none;
@@ -239,7 +239,7 @@ h3 {
 }
 #clearAgenda {
 	float: right;
-    padding: 13px 2px 10px 2px;
+    padding: 13px 2px 12px 2px;
     margin: 0 10px 0px 0;
 }
 #clearAgenda:hover{
