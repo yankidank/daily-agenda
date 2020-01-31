@@ -1,5 +1,5 @@
-//const hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
-const hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
+//var hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+var hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
 var storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 var currentHour = Number(moment().format('H'));
 var currentDayOfYear = moment().dayOfYear();
@@ -100,7 +100,7 @@ function renderHour(item, index) {
       setTimeout(function(){
         $('#save_'+item).empty();
       }, 1000);
-    }, 1300);
+    }, 700);
   });
   // If the user clicks outside of the input, display checkmark on save
 /*   $(document).mouseup(function(e){
