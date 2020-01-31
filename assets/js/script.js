@@ -19,6 +19,30 @@ function clearAgenda(){
     location.reload();
   }
 }
+function displayTime() {
+  var time = moment().format('LT');
+  $('#clock').html(time);
+  setTimeout(displayTime, 1000);
+}
+displayTime();
+var hourViewStored = Number(window.localStorage.getItem("hourView"))
+if (hourViewStored){
+  hourView(hourViewStored)
+  $("#mode option[value="+hourViewStored+"]").attr('selected', 'selected');
+}
+function hourView(selectedValue){
+  if (selectedValue === 24){
+    hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+  } else {
+    hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
+  }
+  localStorage.setItem("hourView", selectedValue)
+  hours.forEach(renderHour);
+}
+$("#mode").change(function () {
+  var selectedValue = Number($(this).val())
+  hourView(selectedValue)
+});
 function dayRender(){
   $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+"  Agenda</a>");
   $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
@@ -26,21 +50,20 @@ function dayRender(){
   if (storedValues === null){
     storedValues = Array.apply(0, Array(24)).map(function(){return '';});
   }
+  localStorage.setItem("dayView", newDayOfYear)
   $("#calendar").hide()
   $("#calendar").fadeIn(250)
   hours.forEach(renderHour);
 }
-$(function () {
-  $("#day").change(function () {
-    //var selectedText = $(this).find("option:selected").text()
-    var selectedValue = Number($(this).val())
-    if (selectedValue === 0){
-      newDayOfYear = currentDayOfYear
-    } else {
-      newDayOfYear = newDayOfYear + selectedValue
-    }
-    dayRender()
-  });
+$("#day").change(function () {
+  //var selectedText = $(this).find("option:selected").text()
+  var selectedValue = Number($(this).val())
+  if (selectedValue === 0){
+    newDayOfYear = currentDayOfYear
+  } else {
+    newDayOfYear = newDayOfYear + selectedValue
+  }
+  dayRender()
 });
 function dayChange(n){
   if (currentDayOfYear !== newDayOfYear){

@@ -40,6 +40,9 @@ body {
 	-moz-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
 	box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
 }
+.nav_content {
+	font-size:1.4rem;
+}
 .nav_content ul {
 	margin:0;
 	padding:0;
@@ -82,15 +85,24 @@ body {
 #agendaWrapper a:hover {
 	cursor:pointer;
 }
-#day {
+#clock {
+	margin-right:10px;
+	padding:12px 5px 10px 2px;
+	float:right;
+}
+#mode {
 	margin-right:5px;
 	padding:10px 5px 10px 10px;
-	display:inline;
 	float:right;
 	background:none;
 	border:none;
 }
-#day option {
+#day {
+	margin-right:5px;
+	padding:10px 5px 10px 10px;
+	float:right;
+	background:none;
+	border:none;
 }
 #dayPrev {
 	float:left;
@@ -227,9 +239,8 @@ h3 {
 }
 #clearAgenda {
 	float: right;
-    padding: 9px 2px 9px 2px;
+    padding: 10px 2px 10px 2px;
     margin: 2px 10px 0px 0;
-    font-size: 1.6rem;
 }
 #clearAgenda:hover{
 	cursor:pointer;
