@@ -94,13 +94,13 @@ function renderHour(item, index) {
   $("#input_"+item).on("input", function() {
     savetoLocal();
     clearTimeout(timeoutId);
+    $('#save_'+item).empty();
     timeoutId = setTimeout(function() {
-      $('#save_'+item).empty();
       $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
       setTimeout(function(){
         $('#save_'+item).empty();
       }, 1000);
-    }, 600);
+    }, 1300);
   });
   // If the user clicks outside of the input, display checkmark on save
 /*   $(document).mouseup(function(e){
