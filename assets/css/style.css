@@ -26,11 +26,11 @@ body {
 	width:100%;
 	margin:0 auto;
 	min-width:480px;
-	max-width:960px;
+	max-width:1080px;
 }
-@media only screen and (min-width: 960px)  {
+@media only screen and (min-width: 1080px)  {
 	.nav_wrapper, .main_wrapper {
-		width:960px;
+		width:1080px;
 	}
 }
 footer {
