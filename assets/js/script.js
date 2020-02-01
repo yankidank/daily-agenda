@@ -9,6 +9,9 @@ var AMPM = '';
 var itemTwelve;
 var dayTrackPrev;
 var dayTrackNext;
+var sunrise;
+var sunset;
+var timestamp = Date.now()
 $('h1').append(moment().format('dddd, MMMM Do'));
 $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
 function clearAgenda(){
@@ -165,9 +168,37 @@ function renderHour(item, index) {
     $("#hour_num_"+item).addClass("hour_num_current");
   } 
 }
+
+var weatherAPI = '5ec45324b97dfab94d81259ceb9c7461'
+var weatherDiv = document.getElementById("weather");
+var weatherInner = document.createElement("div");
+var getIP = 'http://ip-api.com/json/';
+var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather'
+$.getJSON(getIP).done(function(location) {
+  $.getJSON(openWeatherMap, {
+    lat: location.lat,
+    lon: location.lon,
+    units: 'imperial',
+    APPID: weatherAPI
+  }).done(function(weather) {
+    $("#city").append(weather.name+" ");
+    $("#weather").append(Math.round(weather.main.temp)+'° F');
+    sunrise = weather.sys.sunrise
+    localStorage.setItem("sunrise", sunrise)
+    sunset = weather.sys.sunset
+    localStorage.setItem("sunset", sunset)
+    console.log(weather)
+  })
+})
+timestamp = (timestamp-(timestamp%1000))/1000;
+var sunriseStored = Number(window.localStorage.getItem("sunrise"))
+var sunsetStored = Number(window.localStorage.getItem("sunset"))
+// Detect URL mode parameter
 var url_string = window.location.href
 var url = new URL(url_string);
 var viewMode = url.searchParams.get("mode");
-if (viewMode === "dark"){
- $('body').append('<link href="./assets/css/dark.css" rel="stylesheet" />');    
+if (viewMode === "light" ){
+  // Do nothing
+} else if (viewMode === "dark" || timestamp < sunriseStored || timestamp > sunsetStored ){
+  $('body').append('<link href="./assets/css/dark.css" rel="stylesheet" />');    
 }

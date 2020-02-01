@@ -18,6 +18,9 @@ footer {
 	background:#2f2f2f;
 	color:#6f6f6f;
 }
+#weather {
+	border-right: 1px solid #333;
+}
 #mode, #day {
 	color:#6f6f6f;
 }
