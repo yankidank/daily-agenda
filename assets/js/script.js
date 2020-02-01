@@ -10,7 +10,7 @@ var itemTwelve;
 var dayTrackPrev;
 var dayTrackNext;
 $('h1').append(moment().format('dddd, MMMM Do'));
-$('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+"  Agenda</a>");
+$('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
 function clearAgenda(){
   var removeAgenda = confirm("Are you sure that you want to remove all agenda items from your calendar?");
   if (removeAgenda == true) {
@@ -43,7 +43,7 @@ $("#mode").change(function () {
   hourView(selectedValue)
 });
 function dayRender(){
-  $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+"  Agenda</a>");
+  $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
   $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
   storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
   if (storedValues === null){

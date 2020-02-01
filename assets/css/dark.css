@@ -5,13 +5,19 @@ body {
 h2 {
 	color:#6f6f6f;
 }
+.nav_wrapper {
+	color:#6f6f6f;
+}
 .main_wrapper {
 	background:#2f2f2f;
 	-webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.6);
 }
-#mode, #day, .input_field {
+#mode, #day {
+	color:#6f6f6f;
+}
+.input_field {
 	color:#fff;
 }
 #mode option, #day option {
