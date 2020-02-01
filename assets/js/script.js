@@ -112,6 +112,11 @@ $.getJSON(getIP).done(function(location) {
   })
 })
 timestamp = (timestamp-(timestamp%1000))/1000;
+if (localStorage.getItem("sunrise")){
+  console.log("sunrise loaded from localStorage")
+} else {
+  console.log("sunrise missing from localStorage")
+}
 var sunriseStored = Number(window.localStorage.getItem("sunrise"))
 var sunsetStored = Number(window.localStorage.getItem("sunset"))
 var sunrise_plus = Number(sunriseStored) + 30 * 60
@@ -123,13 +128,12 @@ var url_string = window.location.href
 var url = new URL(url_string);
 var viewMode = url.searchParams.get("mode");
 var viewActive;
-
 if (viewMode === "dark"){
   viewActive = "dark"
 } else {
   viewActive = "light"
 }
-
+console.log("viewActive: " +viewActive)
 hours.forEach(renderHour);
 function renderHour(item, index) {
   if (index === 0){
@@ -221,6 +225,8 @@ function renderHour(item, index) {
 $('#modeCheck').click(function() {
   var checkMode1 = $('#modeCheck').prop('checked')
   var checkMode2 = $('#modeCheck').is(':checked')
+  console.log("checkMode1: "+checkMode1)
+  console.log("checkMode2: "+checkMode2)
   if (checkMode1 === true || checkMode2 === true){
     viewActive = 'dark'
     $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');    
@@ -229,7 +235,8 @@ $('#modeCheck').click(function() {
     $( "#darkModeEnabled" ).remove();  
   }
 });
-if (viewMode === "light" ){
+
+if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
 } else if (viewMode === "dark" || timestamp < sunriseStored || timestamp > sunsetStored ){
   viewActive = 'dark'
@@ -238,3 +245,9 @@ if (viewMode === "light" ){
   viewActive = 'light'
   $( "#darkModeEnabled" ).remove();    
 }
+
+console.log("viewMode: "+ viewMode)
+console.log("viewActive: "+ viewActive)
+console.log("timestamp: "+ timestamp)
+console.log("sunriseStored: "+ sunriseStored)
+console.log("sunsetStored: "+ sunsetStored)

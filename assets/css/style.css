@@ -38,6 +38,7 @@ footer {
 }
 .footer_wrapper {
 	font-size:1.4rem;
+	padding-bottom:6px;
 }
 .nav_wrapper {
 	color:#555;
@@ -356,13 +357,12 @@ h3 {
 	content: none;
 }
 /* Dark mode toggle */
-/* The switch - the box around the slider */
 .switch {
     position: relative;
     display: inline-block;
     width: 50px;
     float: left;
-    margin-top: 11px;
+    margin-top: 10px;
 	height: 23px;
 	opacity:0.8;
 }
@@ -407,7 +407,6 @@ input:checked + .slider:before {
 .slider.round {
 	border-radius: 18px;
 }
-
 .slider.round:before {
 	border-radius: 50%;
 }
