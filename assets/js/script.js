@@ -170,7 +170,7 @@ function renderHour(item, index) {
       savetoLocal()
       $('#save_'+item).empty();
       if (viewActive === "dark"){
-        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check.png" /></div>')
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check2.png" /></div>')
       } else {
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
       }
@@ -188,7 +188,7 @@ function renderHour(item, index) {
     timeoutId = setTimeout(function() {
       $('#save_'+item).empty();
       if (viewActive === "dark"){
-        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check.png" /></div>')
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check2.png" /></div>')
       } else {
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
       }
