@@ -47,3 +47,23 @@ footer {
 .hour {
 	color:#6f6f6f;
 }
+.hour_num_current {
+	color:#50B748;
+}
+.hour_indicator {
+	background:#50B748;
+}
+.checkWrapper {
+    width: 40px;
+    margin: 2px 0 0 1px;
+}
+.checkmark {
+	width: 20px;
+	height: 20px;
+    margin: 9px 0 0 6px;
+}
+.lds-ring div {
+	margin: 9px 0 0 13px;
+	border: 10px solid #50B748;
+	border-color: #50B748 transparent transparent transparent;
+}

@@ -89,6 +89,47 @@ storedValues = JSON.parse(window.localStorage.getItem("day_"+currentDayOfYear))
 if (storedValues === null){
    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 }
+
+var weatherAPI = '5ec45324b97dfab94d81259ceb9c7461'
+var weatherDiv = document.getElementById("weather");
+var weatherInner = document.createElement("div");
+var getIP = 'http://ip-api.com/json/';
+var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather'
+$.getJSON(getIP).done(function(location) {
+  $.getJSON(openWeatherMap, {
+    lat: location.lat,
+    lon: location.lon,
+    units: 'imperial',
+    APPID: weatherAPI
+  }).done(function(weather) {
+    $("#city").append(weather.name+" ");
+    $("#weather").append(Math.round(weather.main.temp)+'° F');
+    sunrise = weather.sys.sunrise
+    localStorage.setItem("sunrise", sunrise)
+    sunset = weather.sys.sunset
+    localStorage.setItem("sunset", sunset)
+    //console.log(weather)
+  })
+})
+timestamp = (timestamp-(timestamp%1000))/1000;
+var sunriseStored = Number(window.localStorage.getItem("sunrise"))
+var sunsetStored = Number(window.localStorage.getItem("sunset"))
+var sunrise_plus = Number(sunriseStored) + 30 * 60
+var sunrise_minus = sunriseStored - 30 * 60
+var sunset_plus = sunsetStored + 30 * 60
+var sunset_minus = sunsetStored + 30 * 60
+// Detect URL mode parameter
+var url_string = window.location.href
+var url = new URL(url_string);
+var viewMode = url.searchParams.get("mode");
+var viewActive;
+
+if (viewMode === "dark"){
+  viewActive = "dark"
+} else {
+  viewActive = "light"
+}
+
 hours.forEach(renderHour);
 function renderHour(item, index) {
   if (index === 0){
@@ -128,7 +169,11 @@ function renderHour(item, index) {
     if (e.keyCode === 13) {
       savetoLocal()
       $('#save_'+item).empty();
-      $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+      if (viewActive === "dark"){
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check.png" /></div>')
+      } else {
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+      }
       setTimeout(function(){
         $('#save_'+item).empty();
       }, 1000);
@@ -142,7 +187,11 @@ function renderHour(item, index) {
     $('#save_'+item).prepend('<div class="checkWrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>')
     timeoutId = setTimeout(function() {
       $('#save_'+item).empty();
-      $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+      if (viewActive === "dark"){
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check.png" /></div>')
+      } else {
+        $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
+      }
       setTimeout(function(){
         $('#save_'+item).empty();
       }, 1000);
@@ -168,37 +217,11 @@ function renderHour(item, index) {
     $("#hour_num_"+item).addClass("hour_num_current");
   } 
 }
-
-var weatherAPI = '5ec45324b97dfab94d81259ceb9c7461'
-var weatherDiv = document.getElementById("weather");
-var weatherInner = document.createElement("div");
-var getIP = 'http://ip-api.com/json/';
-var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather'
-$.getJSON(getIP).done(function(location) {
-  $.getJSON(openWeatherMap, {
-    lat: location.lat,
-    lon: location.lon,
-    units: 'imperial',
-    APPID: weatherAPI
-  }).done(function(weather) {
-    $("#city").append(weather.name+" ");
-    $("#weather").append(Math.round(weather.main.temp)+'° F');
-    sunrise = weather.sys.sunrise
-    localStorage.setItem("sunrise", sunrise)
-    sunset = weather.sys.sunset
-    localStorage.setItem("sunset", sunset)
-    console.log(weather)
-  })
-})
-timestamp = (timestamp-(timestamp%1000))/1000;
-var sunriseStored = Number(window.localStorage.getItem("sunrise"))
-var sunsetStored = Number(window.localStorage.getItem("sunset"))
-// Detect URL mode parameter
-var url_string = window.location.href
-var url = new URL(url_string);
-var viewMode = url.searchParams.get("mode");
 if (viewMode === "light" ){
-  // Do nothing
+  viewActive = 'light'
 } else if (viewMode === "dark" || timestamp < sunriseStored || timestamp > sunsetStored ){
+  viewActive = 'dark'
   $('body').append('<link href="./assets/css/dark.css" rel="stylesheet" />');    
+} else {
+  viewActive = 'light'
 }

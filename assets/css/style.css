@@ -89,6 +89,9 @@ footer {
 #agendaWrapper a:hover {
 	cursor:pointer;
 }
+h1, #clock, #weather, #city, #weather_image {
+    cursor: default;
+}
 #clock {
     margin: 13px 0 0 0;
     padding: 0px 0px 0px 12px;
