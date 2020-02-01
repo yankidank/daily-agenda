@@ -217,11 +217,24 @@ function renderHour(item, index) {
     $("#hour_num_"+item).addClass("hour_num_current");
   } 
 }
+// Dark mode switch
+$('#modeCheck').click(function() {
+  var checkMode1 = $('#modeCheck').prop('checked')
+  var checkMode2 = $('#modeCheck').is(':checked')
+  if (checkMode1 === true || checkMode2 === true){
+    viewActive = 'dark'
+    $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');    
+  } else {
+    viewActive = 'light'
+    $( "#darkModeEnabled" ).remove();  
+  }
+});
 if (viewMode === "light" ){
   viewActive = 'light'
 } else if (viewMode === "dark" || timestamp < sunriseStored || timestamp > sunsetStored ){
   viewActive = 'dark'
-  $('body').append('<link href="./assets/css/dark.css" rel="stylesheet" />');    
+  $('body').append('<link id ="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');  
 } else {
   viewActive = 'light'
+  $( "#darkModeEnabled" ).remove();    
 }
