@@ -1,4 +1,3 @@
-//var hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
 var hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
 var storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 var currentHour = Number(moment().format('H'));
@@ -107,7 +106,7 @@ function renderHour(item, index) {
     itemTwelve = 12
   }
   // HTML for each hour
-  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_num"><div class="hour_item"></div>'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
+  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_num" id="hour_num_'+item+'">'+itemTwelve+' '+AMPM+'</div><div class="hour_item" id="hour_item_'+item+'"></div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
   function savetoLocal(){
     inputValue = $("#input_"+item).val()
     storedValues.splice(item, 1, inputValue)
@@ -159,11 +158,16 @@ function renderHour(item, index) {
   });
   if(item < currentHour && newDayOfYear === currentDayOfYear || newDayOfYear < currentDayOfYear){
     // Change the input field background color if the time has passed
-    $("#input_"+item).css( "background", "rgb(250, 250, 249)" );
-    $("#input_"+item).css( "color", "rgb(183, 183, 183)" );
+    $("#input_"+item).addClass("input_field_past");
   } else if(item <= currentHour && currentDayOfYear === newDayOfYear){
     // Display an indicator icon next to the current hour
-    $("#hour_"+item+" .hour_item").css( "background", "rgb(0, 211, 119)" );
-    $("#hour_"+item+" .hour_item").css( "border-radius", "50%" );
-  }
+    $("#hour_"+item+" .hour_item").addClass("hour_indicator");
+    $("#hour_num_"+item).addClass("hour_num_current");
+  } 
+}
+var url_string = window.location.href
+var url = new URL(url_string);
+var viewMode = url.searchParams.get("mode");
+if (viewMode === "dark"){
+ $('body').append('<link href="./assets/css/dark.css" rel="stylesheet" />');    
 }

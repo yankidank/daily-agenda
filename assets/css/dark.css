@@ -1,0 +1,39 @@
+body {
+	background:#1b1b1b;
+	color:#fff;
+}
+h2 {
+	color:#6f6f6f;
+}
+.nav_wrapper, .main_wrapper {
+	background:#2f2f2f;
+	-webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.6);
+}
+.main_wrapper {
+	background:#2f2f2f;
+}
+#mode, #day, .input_field {
+	color:#fff;
+}
+#mode option, #day option {
+	background:#000;
+}
+#dayNext, #dayPrev {
+	opacity:1;
+}
+.input {
+	border-top:1px solid #4e4d4d;
+}
+#calendar .hour_wrapper:last-child .input { border-bottom:1px solid #4e4d4d;}
+.input_field {
+	background:#2f2f2f;
+}
+.input_field_past {
+	background:rgb(58, 57, 57);
+	color:#6f6f6f;
+}
+.hour {
+	color:#6f6f6f;
+}

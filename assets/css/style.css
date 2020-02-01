@@ -179,6 +179,11 @@ h3 {
     width: 98%;
     padding: 11px 1%;
 }
+.input_field_past {
+	background:rgb(250, 250, 249);
+	color:rgb(183, 183, 183);
+}
+#calendar .hour_wrapper:last-child .input { border-bottom:1px solid #ddd;}
 .hour_wrapper {
 	display:block;
 	float:left;
@@ -196,15 +201,23 @@ h3 {
 	color: #bbb;
 }
 .hour_num {
-	display:inline-block;
-	margin-left: -8px;
-	width:100%;
+	display:inline;
+	float:right;
+	margin:12px 20px 0 0;
 	text-align:right;
 }
+.hour_num_current {
+	color:#00d377;
+}
+.hour_indicator {
+	background:rgb(0, 211, 119);
+	border-radius:50%;
+}	
 .hour_item {
-	display:inline-block;
-	padding: 10px;
-	margin: 11px 6px -4px 0;
+	display:inline;
+	float:right;
+	padding: 3px;
+    margin: 18px 12px 3px 0;
 }
 .input {
 	width:68%;
