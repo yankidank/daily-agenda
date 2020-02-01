@@ -113,9 +113,9 @@ $.getJSON(getIP).done(function(location) {
 })
 timestamp = (timestamp-(timestamp%1000))/1000;
 if (localStorage.getItem("sunrise")){
-  console.log("sunrise loaded from localStorage")
+  //console.log("sunrise loaded from localStorage")
 } else {
-  console.log("sunrise missing from localStorage")
+  //console.log("sunrise missing from localStorage")
 }
 var sunriseStored = Number(window.localStorage.getItem("sunrise"))
 var sunsetStored = Number(window.localStorage.getItem("sunset"))
@@ -133,7 +133,6 @@ if (viewMode === "dark"){
 } else {
   viewActive = "light"
 }
-console.log("viewActive: " +viewActive)
 hours.forEach(renderHour);
 function renderHour(item, index) {
   if (index === 0){
@@ -225,8 +224,6 @@ function renderHour(item, index) {
 $('#modeCheck').click(function() {
   var checkMode1 = $('#modeCheck').prop('checked')
   var checkMode2 = $('#modeCheck').is(':checked')
-  console.log("checkMode1: "+checkMode1)
-  console.log("checkMode2: "+checkMode2)
   if (checkMode1 === true || checkMode2 === true){
     viewActive = 'dark'
     $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');    
@@ -245,9 +242,23 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
   $( "#darkModeEnabled" ).remove();    
 }
-
-console.log("viewMode: "+ viewMode)
-console.log("viewActive: "+ viewActive)
-console.log("timestamp: "+ timestamp)
-console.log("sunriseStored: "+ sunriseStored)
-console.log("sunsetStored: "+ sunsetStored)
+function getWidth() {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  );
+}
+function getHeight() {
+  return Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.documentElement.clientHeight
+  );
+}
+console.log('Width:  ' +  getWidth() );
+console.log('Height: ' + getHeight() );
