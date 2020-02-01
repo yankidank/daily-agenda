@@ -27,7 +27,6 @@ body {
 	margin:0 auto;
 	min-width:480px;
 	max-width:960px;
-	background:#fff;
 }
 @media only screen and (min-width: 960px)  {
 	.nav_wrapper, .main_wrapper {
@@ -36,9 +35,7 @@ body {
 }
 .nav_wrapper {
 	margin-bottom:10px;
-	-webkit-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
-	-moz-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
-	box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
+	margin-top:11px;
 }
 .nav_content {
 	font-size:1.4rem;
@@ -63,7 +60,7 @@ body {
 	color:#af0808;
 }
 .main_wrapper {
-	margin: 20px auto 20px auto;
+	margin: 0 auto 50px auto;
 	background:#fff;
 	-webkit-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
 	-moz-box-shadow: 0px 2px 2px 0px rgba(199,199,199,0.6);
@@ -135,7 +132,7 @@ h2 {
 	letter-spacing: 0.3rem;
 }
 h3 {
-    margin: 10px 20px;
+    margin: 10px 0px;
     padding: 0;
 	font-size: 1.25em;
 	font-weight:600;
