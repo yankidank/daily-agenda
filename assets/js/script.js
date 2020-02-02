@@ -232,7 +232,6 @@ $('#modeCheck').click(function() {
     $( "#darkModeEnabled" ).remove();  
   }
 });
-
 if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
 } else if (viewMode === "dark" || timestamp < sunriseStored || timestamp > sunsetStored ){
@@ -242,23 +241,14 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
   $( "#darkModeEnabled" ).remove();    
 }
-function getWidth() {
-  return Math.max(
-    document.body.scrollWidth,
-    document.documentElement.scrollWidth,
-    document.body.offsetWidth,
-    document.documentElement.offsetWidth,
-    document.documentElement.clientWidth
-  );
-}
-function getHeight() {
-  return Math.max(
-    document.body.scrollHeight,
-    document.documentElement.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.offsetHeight,
-    document.documentElement.clientHeight
-  );
-}
-console.log('Width:  ' +  getWidth() );
-console.log('Height: ' + getHeight() );
+/* 
+$("h1").click(function() {
+  //$("#agendaTitle").fadeIn(300)
+
+  var clicks = $(this).data('clicks')
+  if (clicks) {
+    //$("#agendaTitle").fadeOut(300)
+  }
+  $(this).data("clicks", !clicks)
+})
+ */

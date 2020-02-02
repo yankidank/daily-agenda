@@ -115,7 +115,7 @@ footer {
 .main_content h1 {
 	font-size: 1.8em;
     text-align: center;
-	margin: 40px 0 30px 0;
+	margin: 22px 0 36px 0;
 }
 #agendaWrapper {
 	width:100%;
@@ -161,21 +161,13 @@ h1, #clock, #weather, #city, #weather_image {
 	background:none;
 	border:none;
 }
-#dayPrev {
+#dayPrev, #dayNext {
 	float:left;
 	display:inline;
 	text-align:center;
 	width:10%;
 	opacity:0.15;
-	margin-top:-20px;
-}
-#dayNext {
-	float:left;
-	display:inline;
-	text-align:center;
-	width:10%;
-	opacity:0.15;
-	margin-top:-20px;
+	margin-top:24px;
 }
 #agendaTitle {
 	float:left;
@@ -256,7 +248,7 @@ h3 {
 }
 .hour {
 	float:left;
-	width:18%;
+	width:15%;
 	color: #bbb;
 }
 .hour_num {
@@ -279,7 +271,7 @@ h3 {
     margin: 18px 11% 0px 0;
 }
 .input {
-	width:68%;
+	width:71%;
 	float:left;
 	border-top:1px solid #ddd;
 }
