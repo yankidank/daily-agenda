@@ -234,10 +234,13 @@ $('#modeCheck').click(function() {
 });
 if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
+  $("#modeCheck").removeAttr('checked');
 } else if (viewMode === "dark" || timestamp < sunriseStored || timestamp > sunsetStored ){
   viewActive = 'dark'
+  $("#modeCheck").attr('checked', 'checked');
   $('body').append('<link id ="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');  
 } else {
   viewActive = 'light'
+  $("#modeCheck").removeAttr('checked');
   $( "#darkModeEnabled" ).remove();    
 }
