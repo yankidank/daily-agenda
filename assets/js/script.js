@@ -241,14 +241,3 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
   $( "#darkModeEnabled" ).remove();    
 }
-/* 
-$("h1").click(function() {
-  //$("#agendaTitle").fadeIn(300)
-
-  var clicks = $(this).data('clicks')
-  if (clicks) {
-    //$("#agendaTitle").fadeOut(300)
-  }
-  $(this).data("clicks", !clicks)
-})
- */
