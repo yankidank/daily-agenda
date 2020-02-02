@@ -349,7 +349,7 @@ h3 {
 .site {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: 102vh;
 }
 .site_header,
 .site_footer {

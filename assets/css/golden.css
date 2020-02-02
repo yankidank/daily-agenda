@@ -1,0 +1,98 @@
+body.site {
+	color:#fff;
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(-9deg, #ee7752, #e0288deb, #f4932ed1, #ee2a5fe8 );
+	background-size: 600% 600%;
+	-webkit-animation: gradientBG 15s ease infinite;
+	        animation: gradientBG 15s ease infinite;
+}
+@-webkit-keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.main_wrapper {
+	background:#6a69411f;
+	-webkit-box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
+    box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
+}
+footer {
+	background:#6a69411f;
+	color:#fff;
+}
+#dayNext, #dayPrev {
+	opacity:0.2;
+}
+.input_field {
+	color:#fff;
+	background:none;
+}
+.input_field_past {
+	background: #4e4e4e12;
+    color: #d3d2d2e0;
+}
+.hour {
+	color:#fff;
+}
+.hour_indicator {
+	background-color:#f6ed6d;
+}
+.hour_num_current {
+	color:#f6ed6d;
+}
+h1, h3 {
+	text-shadow: 0px 2px 2px rgba(59, 57, 57, 0.4);
+}
+h2 {
+	color:#fff;
+}
+.nav_wrapper {
+	color:#fff;
+}
+#weather {
+	border-right: 1px solid rgba(248, 246, 246, 0.46);
+}
+#mode, #day {
+	color:#fff;
+}
+#mode option, #day option {
+	background:#fff;
+	color:#000;
+}
+.input {
+	border-top:1px solid #d5d4d49e;
+}
+#calendar .hour_wrapper:last-child .input { border-bottom:1px solid #d5d4d49e;}
+.checkWrapper {
+    width: 40px;
+    margin: 2px 0 0 1px;
+}
+.checkmark {
+	width: 20px;
+	height: 20px;
+    margin: 9px 0 0 6px;
+}
+.lds-ring div {
+	margin: 9px 0 0 13px;
+	border: 10px solid #50B748;
+	border-color: #50B748 transparent transparent transparent;
+} 

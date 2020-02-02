@@ -130,6 +130,8 @@ var viewMode = url.searchParams.get("mode");
 var viewActive;
 if (viewMode === "dark"){
   viewActive = "dark"
+} else if (viewMode === "golden"){
+  viewActive = "golden"
 } else {
   viewActive = "light"
 }
@@ -172,7 +174,7 @@ function renderHour(item, index) {
     if (e.keyCode === 13) {
       savetoLocal()
       $('#save_'+item).empty();
-      if (viewActive === "dark"){
+      if (viewActive === "dark" || viewActive === "golden"){
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check2.png" /></div>')
       } else {
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
@@ -190,7 +192,7 @@ function renderHour(item, index) {
     $('#save_'+item).prepend('<div class="checkWrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>')
     timeoutId = setTimeout(function() {
       $('#save_'+item).empty();
-      if (viewActive === "dark"){
+      if (viewActive === "dark" || viewActive === "golden"){
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check2.png" /></div>')
       } else {
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
@@ -232,15 +234,22 @@ $('#modeCheck').click(function() {
     $( "#darkModeEnabled" ).remove();  
   }
 });
+console.log(viewActive)
 if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
   $("#modeCheck").removeAttr('checked');
-} else if (viewMode === "dark" || timestamp < sunriseStored || timestamp > sunsetStored ){
+} else if (viewMode === "dark" || timestamp < sunrise_minus && viewMode !== "golden" || timestamp > sunset_plus && viewMode !== "golden"){
   viewActive = 'dark'
+  console.log('here')
   $("#modeCheck").attr('checked', 'checked');
-  $('body').append('<link id ="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');  
+  $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');  
+} else if (viewMode === "golden" || timestamp > sunrise_minus && timestamp < sunrise_plus || timestamp > sunset_minus && timestamp < sunset_plus) {
+  viewActive = 'golden'
+  $("#modeCheck").attr('checked', 'checked');
+  $('body').append('<link id="goldenModeEnabled" href="./assets/css/golden.css" rel="stylesheet" />');  
 } else {
   viewActive = 'light'
   $("#modeCheck").removeAttr('checked');
   $( "#darkModeEnabled" ).remove();    
 }
+console.log(viewActive)
