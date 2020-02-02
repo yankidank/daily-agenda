@@ -12,6 +12,7 @@ var dayTrackNext;
 var sunrise;
 var sunset;
 var timestamp = Date.now()
+var goldenCSS = '<link id="goldenModeEnabled" href="./assets/css/golden.css" rel="stylesheet" />'
 $('h1').append(moment().format('dddd, MMMM Do'));
 $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
 function clearAgenda(){
@@ -226,15 +227,19 @@ function renderHour(item, index) {
 $('#modeCheck').click(function() {
   var checkMode1 = $('#modeCheck').prop('checked')
   var checkMode2 = $('#modeCheck').is(':checked')
-  if (checkMode1 === true || checkMode2 === true){
-    viewActive = 'dark'
+  if (checkMode1 === true && checkMode2 === true){
+    $("#goldenModeEnabled").remove(); 
     $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');    
-  } else {
+    viewActive = 'dark'
+  } else if (checkMode1 === false && checkMode2 === false) {
     viewActive = 'light'
-    $( "#darkModeEnabled" ).remove();  
-  }
+    $("#darkModeEnabled").remove();
+    $("#goldenModeEnabled").remove(); 
+  } 
+  if (viewActive === "golden") {
+    $("#darkModeEnabled").remove();
+  } 
 });
-console.log(viewActive)
 if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
   $("#modeCheck").removeAttr('checked');
@@ -246,10 +251,13 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
 } else if (viewMode === "golden" || timestamp > sunrise_minus && timestamp < sunrise_plus || timestamp > sunset_minus && timestamp < sunset_plus) {
   viewActive = 'golden'
   $("#modeCheck").attr('checked', 'checked');
-  $('body').append('<link id="goldenModeEnabled" href="./assets/css/golden.css" rel="stylesheet" />');  
+  $('body').append(goldenCSS);  
 } else {
   viewActive = 'light'
   $("#modeCheck").removeAttr('checked');
   $( "#darkModeEnabled" ).remove();    
 }
-console.log(viewActive)
+if (viewMode === "light" || viewMode === "dark"){
+  console.log('remove golden')
+  $('#goldenModeEnabled').remove()
+}
