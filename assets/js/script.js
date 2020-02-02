@@ -136,7 +136,7 @@ if (viewMode === "dark"){
 } else {
   viewActive = "light"
 }
-console.log(viewActive)
+console.log('top viewActive: '+viewActive)
 hours.forEach(renderHour);
 function renderHour(item, index) {
   if (index === 0){
@@ -241,6 +241,9 @@ $('#modeCheck').click(function() {
     $("#darkModeEnabled").remove();
   } 
 });
+console.log('middle viewActive: '+viewActive)
+console.log('middle viewMode: '+viewMode)
+
 if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   viewActive = 'light'
   $("#modeCheck").removeAttr('checked');
@@ -260,4 +263,5 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
 if (viewMode === "light" || viewMode === "dark"){
   $('#goldenModeEnabled').remove()
 }
-console.log(viewActive)
+console.log('end viewActive: '+viewActive)
+console.log('end viewMode: '+viewMode)
