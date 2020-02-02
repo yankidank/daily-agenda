@@ -248,7 +248,7 @@ h3 {
 }
 .hour {
 	float:left;
-	width:15%;
+	width:18%;
 	color: #bbb;
 }
 .hour_num {
@@ -271,7 +271,7 @@ h3 {
     margin: 18px 11% 0px 0;
 }
 .input {
-	width:71%;
+	width:70%;
 	float:left;
 	border-top:1px solid #ddd;
 }
@@ -281,7 +281,8 @@ h3 {
 .save {
 	float:left;
 	text-align:center;
-	width:14%;
+	width:12%;
+	margin-top: 1px;
 }
 .save:hover {
 	cursor:pointer;
@@ -292,9 +293,9 @@ h3 {
 }
 .checkWrapper {
 	float: left;
-    width: 50px;
-    height: 40px;
-    overflow: hidden;
+    width: 44px;
+    height: 37px;
+	overflow: hidden;
 }
 .checkmark {
 	width: 104px;
@@ -313,8 +314,6 @@ h3 {
 .lds-ring {
 	display: inline;
 	position: relative;
-	width: 20px;
-	height: 20px;
 }
 .lds-ring div {
 	box-sizing: border-box;
