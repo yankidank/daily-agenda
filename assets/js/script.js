@@ -127,7 +127,7 @@ var sunset_minus = sunsetStored + 30 * 60
 // Detect URL mode parameter
 var url_string = window.location.href
 var url = new URL(url_string);
-var viewMode = url.searchParams.get("mode");
+var viewMode = String(url.searchParams.get("mode"));
 var viewActive;
 if (viewMode === "dark"){
   viewActive = "dark"
@@ -136,6 +136,7 @@ if (viewMode === "dark"){
 } else {
   viewActive = "light"
 }
+console.log(viewActive)
 hours.forEach(renderHour);
 function renderHour(item, index) {
   if (index === 0){
@@ -245,7 +246,6 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   $("#modeCheck").removeAttr('checked');
 } else if (viewMode === "dark" || timestamp < sunrise_minus && viewMode !== "golden" || timestamp > sunset_plus && viewMode !== "golden"){
   viewActive = 'dark'
-  console.log('here')
   $("#modeCheck").attr('checked', 'checked');
   $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');  
 } else if (viewMode === "golden" || timestamp > sunrise_minus && timestamp < sunrise_plus || timestamp > sunset_minus && timestamp < sunset_plus) {
@@ -258,6 +258,6 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
   $( "#darkModeEnabled" ).remove();    
 }
 if (viewMode === "light" || viewMode === "dark"){
-  console.log('remove golden')
   $('#goldenModeEnabled').remove()
 }
+console.log(viewActive)
