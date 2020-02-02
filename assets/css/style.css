@@ -302,6 +302,15 @@ h3 {
     height: 104px;
     margin: -32px 0 0 -27px;
 }
+#notifications {
+	float: right;
+	margin-right:5px;
+	padding:13px 10px 12px 17px;
+}
+#notifications:hover {
+	cursor:pointer;
+	color:rgb(0, 211, 119);
+}
 #clearAgenda {
 	float: right;
     padding: 13px 2px 12px 2px;

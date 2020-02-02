@@ -136,7 +136,6 @@ if (viewMode === "dark"){
 } else {
   viewActive = "light"
 }
-console.log('top viewActive: '+viewActive)
 hours.forEach(renderHour);
 function renderHour(item, index) {
   if (index === 0){
@@ -240,18 +239,15 @@ $('#modeCheck').click(function() {
   if (viewActive === "golden") {
     $("#darkModeEnabled").remove();
   } 
-});
-console.log('middle viewActive: '+viewActive)
-console.log('middle viewMode: '+viewMode)
-
-if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
+})
+if (viewMode === "light" || sunriseStored === 0 && viewMode !== "golden" && viewMode !== "dark" || sunsetStored === 0 && viewMode !== "golden" && viewMode !== "dark"){
   viewActive = 'light'
   $("#modeCheck").removeAttr('checked');
 } else if (viewMode === "dark" || timestamp < sunrise_minus && viewMode !== "golden" || timestamp > sunset_plus && viewMode !== "golden"){
   viewActive = 'dark'
   $("#modeCheck").attr('checked', 'checked');
   $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');  
-} else if (viewMode === "golden" || timestamp > sunrise_minus && timestamp < sunrise_plus || timestamp > sunset_minus && timestamp < sunset_plus) {
+} else if (viewMode === "golden" || timestamp >= sunrise_minus && timestamp <= sunrise_plus || timestamp >= sunset_minus && timestamp <= sunset_plus) {
   viewActive = 'golden'
   $("#modeCheck").attr('checked', 'checked');
   $('body').append(goldenCSS);  
@@ -263,5 +259,6 @@ if (viewMode === "light" || sunriseStored === 0 || sunsetStored === 0 ){
 if (viewMode === "light" || viewMode === "dark"){
   $('#goldenModeEnabled').remove()
 }
-console.log('end viewActive: '+viewActive)
-console.log('end viewMode: '+viewMode)
+$('#notifications').click(function() {
+  // Browser push notifications
+})
