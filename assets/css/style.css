@@ -28,44 +28,6 @@ body {
 	min-width:480px;
 	max-width:1080px;
 }
-@media only screen and (max-width: 600px)  {
-	.nav_wrapper, .main_wrapper, .footer_wrapper {
-		width:480px;
-	}
-	.nav_content h3 {
-		margin-left:10px !important;
-	}
-	#clock {
-		margin-right:10px !important;
-	}
-	.slider {
-		left: 10px !important;
-    	right: -10px !important;
-	}
-	#day {
-		margin-right:10px !important;
-	}
-}
-@media screen and (max-width: 900px) and (min-width: 600px) {
-	.nav_wrapper, .main_wrapper, .footer_wrapper {
-		width:580px;
-	}
-}
-@media screen and (max-width: 1080px) and (min-width: 900px) {
-	.nav_wrapper, .main_wrapper, .footer_wrapper {
-		width:880px;
-	}
-}
-@media screen and (max-width: 1200px) and (min-width: 1080px) {
-	.nav_wrapper, .main_wrapper, .footer_wrapper {
-		width:1060px;
-	}
-}
-@media screen and (min-width: 1200px) {
-	.nav_wrapper, .main_wrapper, .footer_wrapper {
-		width:1180px;
-	}
-}
 footer {
 	background: #fff;
 }
@@ -250,14 +212,12 @@ h3 {
 }
 .hour {
 	float:left;
-	width:18%;
+	width:20%;
 	color: #bbb;
 }
 .hour_num {
-	display:inline;
-	float:right;
-	margin:12px 16% 0 0;
-	text-align:right;
+	margin: 12px 20% 0 0px;
+    text-align: right;
 }
 .hour_num_current {
 	color:#00d377;
@@ -265,12 +225,14 @@ h3 {
 .hour_indicator {
 	background:rgb(0, 211, 119);
 	border-radius:50%;
-}	
+}
+.hour_item_wrapper {
+	background:red;
+}
 .hour_item {
-	display:inline;
 	float:right;
-	padding: 3px;
-    margin: 18px 11% 0px 0;
+	padding: 5px;
+    margin-right: 15px;
 }
 .input {
 	width:70%;
@@ -283,7 +245,7 @@ h3 {
 .save {
 	float:left;
 	text-align:center;
-	width:12%;
+	width:10%;
 	margin-top: 1px;
 }
 .save:hover {
@@ -446,4 +408,49 @@ input:checked + .slider:before {
 }
 .slider.round:before {
 	border-radius: 50%;
+}
+
+@media only screen and (max-width: 600px)  {
+	.nav_wrapper, .main_wrapper, .footer_wrapper {
+		width:480px;
+	}
+	.nav_content h3 {
+		margin-left:10px !important;
+	}
+	#clock {
+		margin-right:10px !important;
+	}
+	.slider {
+		left: 10px !important;
+    	right: -10px !important;
+	}
+	#day {
+		margin-right:10px !important;
+	}
+	.hour_num {
+		margin:12px 44% 0 0px;
+	}
+}
+@media screen and (max-width: 900px) and (min-width: 600px) {
+	.nav_wrapper, .main_wrapper, .footer_wrapper {
+		width:580px;
+	}
+	.hour_num {
+		margin:12px 44% 0 0px;
+	}
+}
+@media screen and (max-width: 1080px) and (min-width: 900px) {
+	.nav_wrapper, .main_wrapper, .footer_wrapper {
+		width:880px;
+	}
+}
+@media screen and (max-width: 1200px) and (min-width: 1080px) {
+	.nav_wrapper, .main_wrapper, .footer_wrapper {
+		width:1060px;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.nav_wrapper, .main_wrapper, .footer_wrapper {
+		width:1180px;
+	}
 }
