@@ -13,6 +13,7 @@ var sunrise;
 var sunset;
 var timestamp = Date.now()
 var goldenCSS = '<link id="goldenModeEnabled" href="./assets/css/golden.css" rel="stylesheet" />'
+var sunriseCSS = '<link id="goldenModeEnabled" href="./assets/css/golden_sunrise.css" rel="stylesheet" />'
 $('h1').append(moment().format('dddd, MMMM Do'));
 $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
 function clearAgenda(){
@@ -258,6 +259,9 @@ if (viewMode === "light" || sunriseStored === 0 && viewMode !== "golden" && view
   viewActive = 'golden'
   $("#modeCheck").attr('checked', 'checked')
   $('body').append(goldenCSS)
+  if (timestamp >= sunrise_minus && timestamp <= sunrise_plus){
+    $('body').append(sunriseCSS)
+  }
 } else if (viewMode === "dark" || timestamp < sunrise_minus && viewMode !== "golden" || timestamp > sunset_plus && viewMode !== "golden"){
   viewActive = 'dark'
   $("#modeCheck").attr('checked', 'checked')
