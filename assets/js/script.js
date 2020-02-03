@@ -14,6 +14,7 @@ var sunset;
 var timestamp = Date.now()
 var goldenCSS = '<link id="goldenModeEnabled" href="./assets/css/golden.css" rel="stylesheet" />'
 var sunriseCSS = '<link id="goldenModeEnabled" href="./assets/css/golden_sunrise.css" rel="stylesheet" />'
+$("#agendaTitle").html('<h1></h1>');
 $('h1').append(moment().format('dddd, MMMM Do'));
 $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
 function clearAgenda(){
