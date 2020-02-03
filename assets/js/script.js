@@ -285,3 +285,11 @@ if (viewMode === "light" || viewMode === "dark"){
 $('#notifications').click(function() {
   // Browser push notifications
 })
+window.setInterval(function(){
+  // Update the hour indicator
+  if (currentMinute === 0) {
+    currentMinute === 1
+  }
+  var hour_indicator_position = currentMinute/2
+  $(".hour_num_current").css("margin-top", hour_indicator_position+"px");
+}, 30000);
