@@ -90,7 +90,6 @@ storedValues = JSON.parse(window.localStorage.getItem("day_"+currentDayOfYear))
 if (storedValues === null){
    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
 }
-
 var weatherAPI = '5ec45324b97dfab94d81259ceb9c7461'
 var weatherDiv = document.getElementById("weather");
 var weatherInner = document.createElement("div");
@@ -240,21 +239,27 @@ $('#modeCheck').click(function() {
     $("#darkModeEnabled").remove();
   } 
 })
+/* 
+// Make timmestamps shorter for easier comparison
+sunset_minus = Number(String(sunset_minus).slice(3))
+sunset_plus = Number(String(sunset_plus).slice(3))
+timestamp = Number(String(timestamp).slice(3))
+*/
 if (viewMode === "light" || sunriseStored === 0 && viewMode !== "golden" && viewMode !== "dark" || sunsetStored === 0 && viewMode !== "golden" && viewMode !== "dark"){
   viewActive = 'light'
-  $("#modeCheck").removeAttr('checked');
-} else if (viewMode === "dark" || timestamp < sunrise_minus && viewMode !== "golden" || timestamp > sunset_plus && viewMode !== "golden"){
-  viewActive = 'dark'
-  $("#modeCheck").attr('checked', 'checked');
-  $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');  
+  $("#modeCheck").removeAttr('checked')
 } else if (viewMode === "golden" || timestamp >= sunrise_minus && timestamp <= sunrise_plus || timestamp >= sunset_minus && timestamp <= sunset_plus) {
   viewActive = 'golden'
-  $("#modeCheck").attr('checked', 'checked');
-  $('body').append(goldenCSS);  
+  $("#modeCheck").attr('checked', 'checked')
+  $('body').append(goldenCSS)
+} else if (viewMode === "dark" || timestamp < sunrise_minus && viewMode !== "golden" || timestamp > sunset_plus && viewMode !== "golden"){
+  viewActive = 'dark'
+  $("#modeCheck").attr('checked', 'checked')
+  $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />')
 } else {
   viewActive = 'light'
-  $("#modeCheck").removeAttr('checked');
-  $( "#darkModeEnabled" ).remove();    
+  $("#modeCheck").removeAttr('checked')
+  $( "#darkModeEnabled" ).remove() 
 }
 if (viewMode === "light" || viewMode === "dark"){
   $('#goldenModeEnabled').remove()
