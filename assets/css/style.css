@@ -357,13 +357,13 @@ h3 {
 .site {
 	display: flex;
 	flex-direction: column;
-	height: 102vh;
+	height: 100vh;
 }
 .site_header {
 	flex: none;
 }
 .site_footer {
-	flex: auto;
+	flex: none;
 }
 .site_content {
 	flex: 1 0 auto; 
