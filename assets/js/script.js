@@ -246,8 +246,14 @@ sunset_plus = Number(String(sunset_plus).slice(3))
 timestamp = Number(String(timestamp).slice(3))
 */
 if (viewMode === "light" || sunriseStored === 0 && viewMode !== "golden" && viewMode !== "dark" || sunsetStored === 0 && viewMode !== "golden" && viewMode !== "dark"){
-  viewActive = 'light'
-  $("#modeCheck").removeAttr('checked')
+  if (currentHour > 18 || currentHour < 6 ){
+    viewActive = 'dark'
+    $("#modeCheck").attr('checked', 'checked')
+    $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />')  
+  } else {
+    viewActive = 'light'
+    $("#modeCheck").removeAttr('checked')
+  }
 } else if (viewMode === "golden" || timestamp >= sunrise_minus && timestamp <= sunrise_plus || timestamp >= sunset_minus && timestamp <= sunset_plus) {
   viewActive = 'golden'
   $("#modeCheck").attr('checked', 'checked')
