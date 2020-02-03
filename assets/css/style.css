@@ -359,9 +359,11 @@ h3 {
 	flex-direction: column;
 	height: 102vh;
 }
-.site_header,
-.site_footer {
+.site_header {
 	flex: none;
+}
+.site_footer {
+	flex: auto;
 }
 .site_content {
 	flex: 1 0 auto; 
