@@ -1,7 +1,7 @@
 body.site {
 	color:#fff;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	background: linear-gradient(-4deg,#e9ac66f0, #c88e37d6, #d6591ead, #581167d1, #190453, #000000);
 /* #f13535f2, #e7a511b5, #65335f9c, #1b0657, #060011 */
 	background-size: 300% 300%;
