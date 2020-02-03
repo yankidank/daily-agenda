@@ -162,11 +162,13 @@ h1, #clock, #weather, #city, #weather_image {
 	border:none;
 }
 #dayPrev, #dayNext {
+	font-family: 'Nanum Myeongjo', serif;
+	font-size:2.8em;
 	float:left;
 	display:inline;
 	text-align:center;
 	width:10%;
-	opacity:0.15;
+	opacity:0.25;
 	margin-top:24px;
 }
 #agendaTitle {
