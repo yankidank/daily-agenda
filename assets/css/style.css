@@ -411,10 +411,10 @@ input:checked + .slider:before {
 }
 .hour_num {
 	margin:12px 21% 0 0px;
-	min-width: 79%;
+	min-width: 75%;
 }
 .hour_item {
-	margin-right: 7%;
+	margin-right: 6%;
 }
 @media screen and (max-width: 600px) /* Mobile */ {
 	.nav_content h3 {
@@ -429,6 +429,13 @@ input:checked + .slider:before {
 	}
 	#day {
 		margin-right:10px !important;
+	}
+	.hour_item {
+		margin-right: 9%;
+	}
+	.hour_num {
+		margin-right:30%;
+		min-width: 60%;
 	}
 }
 @media screen and (min-width: 601px) and (max-width: 1080px) {
