@@ -230,7 +230,6 @@ function renderHour(item, index) {
     $("#hour_item_"+item).css("margin-top", hour_indicator_position+"px");
   } 
 }
-
 // Dark mode switch
 $('#modeCheck').click(function() {
   var checkMode1 = $('#modeCheck').prop('checked')
@@ -239,10 +238,12 @@ $('#modeCheck').click(function() {
     $("#goldenModeEnabled").remove(); 
     $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');    
     viewActive = 'dark'
+    window.history.pushState("", "Daily Agenda [Dark Mode]", "?mode=dark");
   } else if (checkMode1 === false && checkMode2 === false) {
     viewActive = 'light'
     $("#darkModeEnabled").remove();
-    $("#goldenModeEnabled").remove(); 
+    $("#goldenModeEnabled").remove();
+    window.history.pushState("", "Daily Agenda", "?mode=light");
   } 
   if (viewActive === "golden") {
     $("#darkModeEnabled").remove();
