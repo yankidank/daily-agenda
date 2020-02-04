@@ -256,7 +256,7 @@ sunset_plus = Number(String(sunset_plus).slice(3))
 timestamp = Number(String(timestamp).slice(3))
 */
 if (viewMode === "light" || sunriseStored === 0 && viewMode !== "golden" && viewMode !== "dark" || sunsetStored === 0 && viewMode !== "golden" && viewMode !== "dark"){
-  if (currentHour > 18 || currentHour < 6 ){
+  if (currentHour > 18 && viewMode !== "light" || currentHour < 6 && viewMode !== "light"){
     viewActive = 'dark'
     $("#modeCheck").attr('checked', 'checked')
     $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />')  
