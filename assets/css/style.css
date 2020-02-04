@@ -232,7 +232,7 @@ h3 {
 .hour_item {
 	float:right;
 	padding: 5px;
-    margin-right: 17px;
+    margin-right: 15px;
 }
 .input {
 	width:70%;
@@ -321,13 +321,13 @@ h3 {
 .site {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	min-height: 100vh;
 }
 .site_header {
-	flex: none;
+	flex: 1;
 }
 .site_footer {
-	flex: none;
+	flex: 1;
 }
 .site_content {
 	flex: 1 0 auto; 
@@ -431,7 +431,7 @@ input:checked + .slider:before {
 		margin:12px 44% 0 0px;
 	}
 	.hour_item {
-		margin-right: 15px;
+		margin-right: 13px;
 	}
 }
 @media screen and (max-width: 900px) and (min-width: 600px) {
@@ -448,7 +448,7 @@ input:checked + .slider:before {
 		width:880px;
 	}
 	.hour_item {
-		margin-right: 13px;
+		margin-right: 12px;
 	}
 }
 @media screen and (max-width: 1200px) and (min-width: 1080px) {

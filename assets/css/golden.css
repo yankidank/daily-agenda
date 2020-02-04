@@ -1,36 +1,32 @@
 body.site {
 	color:#fff;
 	width: 100%;
-	height: 100vh;
-	background: linear-gradient(-4deg,#e9ac66f0, #c88e37d6, #d6591ead, #581167d1, #190453, #000000);
-	background-size: 300% 300%;
-	-webkit-animation: gradientBG 60s ease 1;
-	        animation: gradientBG 60s ease 1;
+	height: 100%;
+	background: linear-gradient(-4deg,#e9ac66f0, #c88e37d6, #d6591ead, #581167d1, #1c0f41ec, #02031c);
+	background-size: 600% 600%;
+	-webkit-animation: gradientBG 35s ease 1;
+			animation: gradientBG 15s ease 1;
+			animation-timing-function: linear;
+			animation-fill-mode: none;
+			animation-direction: reverse;
+}
+@-moz-keyframes gradientBG {
+	0% {background-position: 0% 0%;}
+	50% {background-position: 50% 50%;}
+	100% {background-position: 100% 100%;}
 }
 @-webkit-keyframes gradientBG {
-	0% {
-		background-position: 100% 100%;
-	}
-	50% {
-		background-position: 50% 50%;
-	}
-	100% {
-		background-position: 0% 0%;
-	}
+	0% {background-position: 0% 0%;}
+	50% {background-position: 50% 50%;}
+	100% {background-position: 100% 100%;}
 }
 @keyframes gradientBG {
-	0% {
-		background-position: 100% 100%;
-	}
-	50% {
-		background-position: 50% 50%;
-	}
-	100% {
-		background-position: 0% 0%;
-	}
+	0% {background-position: 0% 0%;}
+	50% {background-position: 50% 50%;}
+	100% {background-position: 100% 100%;}
 }
 .main_wrapper {
-	background:#6a69411f;
+	background:#8d8d8d1e;
 	-webkit-box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
     -moz-box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
     box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
@@ -60,7 +56,7 @@ footer {
 	color:#f6ed6d;
 }
 h1, h3 {
-	text-shadow: 0px 2px 2px rgba(59, 57, 57, 0.4);
+	text-shadow: 0px 3px 3px rgba(49, 49, 49, 0.45);
 }
 h2 {
 	color:#fff;
