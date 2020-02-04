@@ -291,6 +291,6 @@ window.setInterval(function(){
   if (currentMinute === 0) {
     currentMinute === 1
   }
-  var hour_indicator_position = currentMinute/2
+  var hour_indicator_position = Math.floor(currentMinute/2)
   $(".hour_num_current").css("margin-top", hour_indicator_position+"px");
 }, 30000);
