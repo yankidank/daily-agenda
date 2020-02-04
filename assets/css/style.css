@@ -327,7 +327,7 @@ h3 {
 	flex: 1;
 }
 .site_footer {
-	flex: 1;
+	flex: 0;
 }
 .site_content {
 	flex: 1 0 auto; 
