@@ -1,65 +1,68 @@
-var hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
-var storedValues = Array.apply(0, Array(24)).map(function(){return '';});
-var currentMinute = Number(moment().format('m'));
-var currentHour = Number(moment().format('H'));
-var currentDayOfYear = moment().dayOfYear();
-var newDayOfYear = currentDayOfYear;
-var nextDayOfYear;
-var prevDayOfYear;
-var AMPM = '';
-var itemTwelve;
-var dayTrackPrev;
-var dayTrackNext;
-var sunrise;
-var sunset;
+var hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17']
+var storedValues = Array.apply(0, Array(24)).map(function(){return ''})
+var currentMinute = Number(moment().format('m'))
+var currentHour = Number(moment().format('H'))
+var currentDayOfYear = moment().dayOfYear()
+var newDayOfYear = currentDayOfYear
+var nextDayOfYear
+var prevDayOfYear
+var AMPM = ''
+var itemTwelve
+var dayTrackPrev
+var dayTrackNext
+var sunrise
+var sunset
 var timestamp = Date.now()
 var goldenCSS = '<link id="goldenModeEnabled" href="./assets/css/golden.css" rel="stylesheet" />'
 var sunriseCSS = '<link id="goldenModeEnabled" href="./assets/css/golden_sunrise.css" rel="stylesheet" />'
-$("#agendaTitle").html('<h1></h1>');
-$('h1').append(moment().format('dddd, MMMM Do'));
-$('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
+var hourViewStored = Number(window.localStorage.getItem("hourView"))
+var timeoutId
+
+$("#agendaTitle").html('<h1></h1>')
+$('h1').append(moment().format('dddd, MMMM Do'))
+$('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>")
+
 function clearAgenda(){
-  var removeAgenda = confirm("Are you sure that you want to remove all agenda items from your calendar?");
+  var removeAgenda = confirm("Are you sure that you want to remove all agenda items from your calendar?")
   if (removeAgenda == true) {
-    window.localStorage.clear();
-    location.reload();
+    window.localStorage.clear()
+    location.reload()
   }
 }
 function displayTime() {
-  var time = moment().format('LT');
-  $('#clock').html(time);
-  setTimeout(displayTime, 1000);
+  var time = moment().format('LT')
+  $('#clock').html(time)
+  setTimeout(displayTime, 1000)
 }
-displayTime();
-var hourViewStored = Number(window.localStorage.getItem("hourView"))
+displayTime()
 if (hourViewStored){
   hourView(hourViewStored)
-  $("#mode option[value="+hourViewStored+"]").attr('selected', 'selected');
+  $("#mode option[value="+hourViewStored+"]").attr('selected', 'selected')
 }
 function hourView(selectedValue){
   if (selectedValue === 24){
-    hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+    hours =  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
   } else {
-    hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
+    hours =  ['9', '10', '11', '12', '13', '14', '15', '16', '17']
   }
   localStorage.setItem("hourView", selectedValue)
-  hours.forEach(renderHour);
+  hours.forEach(renderHour)
 }
 $("#mode").change(function () {
   var selectedValue = Number($(this).val())
   hourView(selectedValue)
-});
+})
 function dayRender(){
-  $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>");
-  $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'));
+  $('h3').html("<a onclick='dayChange(0)'>"+moment().dayOfYear(newDayOfYear).format('YYYY')+" Daily Agenda</a>")
+  $('h1').html(moment().dayOfYear(newDayOfYear).format('dddd, MMMM Do'))
   storedValues = JSON.parse(window.localStorage.getItem("day_"+newDayOfYear))
   if (storedValues === null){
-    storedValues = Array.apply(0, Array(24)).map(function(){return '';});
+    storedValues = Array.apply(0, Array(24)).map(function(){return ''})
   }
   localStorage.setItem("dayView", newDayOfYear)
   $("#calendar").hide()
   $("#calendar").fadeIn(250)
-  hours.forEach(renderHour);
+  hours.forEach(renderHour)
 }
 $("#day").change(function () {
   //var selectedText = $(this).find("option:selected").text()
@@ -70,7 +73,7 @@ $("#day").change(function () {
     newDayOfYear = newDayOfYear + selectedValue
   }
   dayRender()
-});
+})
 function dayChange(n){
   if (currentDayOfYear !== newDayOfYear){
     if (n === 0){
@@ -91,12 +94,12 @@ function dayNext(){
 }
 storedValues = JSON.parse(window.localStorage.getItem("day_"+currentDayOfYear))
 if (storedValues === null){
-   storedValues = Array.apply(0, Array(24)).map(function(){return '';});
+   storedValues = Array.apply(0, Array(24)).map(function(){return ''})
 }
 var weatherAPI = '5ec45324b97dfab94d81259ceb9c7461'
-var weatherDiv = document.getElementById("weather");
-var weatherInner = document.createElement("div");
-var getIP = 'http://ip-api.com/json/';
+var weatherDiv = document.getElementById("weather")
+var weatherInner = document.createElement("div")
+var getIP = 'http://ip-api.com/json/'
 var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather'
 $.getJSON(getIP).done(function(location) {
   $.getJSON(openWeatherMap, {
@@ -105,8 +108,8 @@ $.getJSON(getIP).done(function(location) {
     units: 'imperial',
     APPID: weatherAPI
   }).done(function(weather) {
-    $("#city").append(weather.name+" ");
-    $("#weather").append(Math.round(weather.main.temp)+'° F');
+    $("#city").append(weather.name+" ")
+    $("#weather").append(Math.round(weather.main.temp)+'° F')
     sunrise = weather.sys.sunrise
     localStorage.setItem("sunrise", sunrise)
     sunset = weather.sys.sunset
@@ -114,7 +117,7 @@ $.getJSON(getIP).done(function(location) {
     //console.log(weather)
   })
 })
-timestamp = (timestamp-(timestamp%1000))/1000;
+timestamp = (timestamp-(timestamp%1000))/1000
 if (localStorage.getItem("sunrise")){
   //console.log("sunrise loaded from localStorage")
 } else {
@@ -128,9 +131,9 @@ var sunset_plus = sunsetStored + 30 * 60
 var sunset_minus = sunsetStored + 30 * 60
 // Detect URL mode parameter
 var url_string = window.location.href
-var url = new URL(url_string);
-var viewMode = String(url.searchParams.get("mode"));
-var viewActive;
+var url = new URL(url_string)
+var viewMode = String(url.searchParams.get("mode"))
+var viewActive
 if (viewMode === "dark"){
   viewActive = "dark"
 } else if (viewMode === "golden"){
@@ -138,10 +141,18 @@ if (viewMode === "dark"){
 } else {
   viewActive = "light"
 }
-hours.forEach(renderHour);
+// Move the time marker to the next hour when the hour passes
+setInterval(function() {
+  if (currentMinute === 0){
+    hours.forEach(renderHour)
+    console.log('re-rendered: '+ currentMinute)
+  }
+  console.log('same: '+ currentMinute)
+}, 59 * 1000)
+hours.forEach(renderHour)
 function renderHour(item, index) {
   if (index === 0){
-    $('#calendar').empty();
+    $('#calendar').empty()
   }
   var savedText = storedValues[item]
   if (item < 12){
@@ -158,76 +169,75 @@ function renderHour(item, index) {
     itemTwelve = 12
   }
   // HTML for each hour
-  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_item_wrapper"><div class="hour_item" id="hour_item_'+item+'"></div></div><div class="hour_num" id="hour_num_'+item+'">'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>');
+  $('#calendar').append('<div class="hour_wrapper"><div class="hour" id="hour_'+item+'"><div class="hour_item_wrapper"><div class="hour_item" id="hour_item_'+item+'"></div></div><div class="hour_num" id="hour_num_'+item+'">'+itemTwelve+' '+AMPM+'</div></div><div class="input"><div class="input_item field"><input class="input_field" type="text" name="hour_input" id="input_'+item+'" value="'+savedText+'"></div></div><div class="save" id="save_'+item+'"><div class="save_item" id="saveText_'+item+'"></div></div></div>')
   function savetoLocal(){
     inputValue = $("#input_"+item).val()
     storedValues.splice(item, 1, inputValue)
     localStorage.setItem("day_"+newDayOfYear, JSON.stringify(storedValues))
   }
   // Save input automatically
-  var timeoutId;
   $('.input_field').on('input propertychange change', function() {
-    clearTimeout(timeoutId);
+    clearTimeout(timeoutId)
     timeoutId = setTimeout(function() {
-      savetoLocal();
-    }, 600);
-  });
+      savetoLocal()
+    }, 600)
+  })
   // Detect enter on keyboard
   $("#input_"+item ).on('keyup', function (e) {
     if (e.keyCode === 13) {
       savetoLocal()
-      $('#save_'+item).empty();
+      $('#save_'+item).empty()
       if (viewActive === "dark" || viewActive === "golden"){
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check2.png" /></div>')
       } else {
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
       }
       setTimeout(function(){
-        $('#save_'+item).empty();
-      }, 1000);
+        $('#save_'+item).empty()
+      }, 1000)
     }
-  });
+  })
   // Detect typing input
   $("#input_"+item).on("input", function() {
-    savetoLocal();
-    clearTimeout(timeoutId);
-    $('#save_'+item).empty();
+    savetoLocal()
+    clearTimeout(timeoutId)
+    $('#save_'+item).empty()
     $('#save_'+item).prepend('<div class="checkWrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>')
     timeoutId = setTimeout(function() {
-      $('#save_'+item).empty();
+      $('#save_'+item).empty()
       if (viewActive === "dark" || viewActive === "golden"){
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/check2.png" /></div>')
       } else {
         $('#save_'+item).prepend('<div class="checkWrapper"><img class="checkmark" src="./assets/img/checkmark.gif" /></div>')
       }
       setTimeout(function(){
-        $('#save_'+item).empty();
-      }, 1000);
-    }, 700);
-  });
+        $('#save_'+item).empty()
+      }, 1000)
+    }, 700)
+  })
   // If the user clicks outside of the input, hide the type/save indicator
   $(document).mouseup(function(e){
-    var container = $("#input_"+item);
+    var container = $("#input_"+item)
     if (!container.is(e.target) && container.has(e.target).length === 0){
-      $('#save_'+item).empty();
+      $('#save_'+item).empty()
     }
-  });
+  })
   // If the user tabs outside of the input, hide the type/save indicator
   $("#input_"+item).blur("input", function() {
-    $('#save_'+item).empty();
-  });
+    $('#save_'+item).empty()
+  })
   if(item < currentHour && newDayOfYear === currentDayOfYear || newDayOfYear < currentDayOfYear){
     // Change the input field background color if the time has passed
-    $("#input_"+item).addClass("input_field_past");
+    $("#input_"+item).addClass("input_field_past")
   } else if(item <= currentHour && currentDayOfYear === newDayOfYear){
     // Display an indicator icon next to the current hour
-    $("#hour_"+item+" .hour_item").addClass("hour_indicator");
-    $("#hour_item_"+item).addClass("hour_num_current");
+    $("#hour_"+item+" .hour_item").addClass("hour_indicator")
+    $("#hour_item_"+item).addClass("hour_num_current")
     if (currentMinute === 0) {
       currentMinute === 1
     }
     var hour_indicator_position = Math.floor(currentMinute/2)
-    $("#hour_item_"+item).css("margin-top", hour_indicator_position+"px");
+    $("#hour_item_"+item).css("margin-top", hour_indicator_position+"px")
   } 
 }
 // Dark mode switch
@@ -235,18 +245,18 @@ $('#modeCheck').click(function() {
   var checkMode1 = $('#modeCheck').prop('checked')
   var checkMode2 = $('#modeCheck').is(':checked')
   if (checkMode1 === true && checkMode2 === true){
-    $("#goldenModeEnabled").remove(); 
-    $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />');    
+    $("#goldenModeEnabled").remove()
+    $('body').append('<link id="darkModeEnabled" href="./assets/css/dark.css" rel="stylesheet" />')  
     viewActive = 'dark'
-    window.history.pushState("", "Daily Agenda [Dark Mode]", "?mode=dark");
+    window.history.pushState("", "Daily Agenda [Dark Mode]", "?mode=dark")
   } else if (checkMode1 === false && checkMode2 === false) {
     viewActive = 'light'
-    $("#darkModeEnabled").remove();
-    $("#goldenModeEnabled").remove();
-    window.history.pushState("", "Daily Agenda", "?mode=light");
+    $("#darkModeEnabled").remove()
+    $("#goldenModeEnabled").remove()
+    window.history.pushState("", "Daily Agenda", "?mode=light")
   } 
   if (viewActive === "golden") {
-    $("#darkModeEnabled").remove();
+    $("#darkModeEnabled").remove()
   } 
 })
 /* 
@@ -292,5 +302,5 @@ window.setInterval(function(){
     currentMinute === 1
   }
   var hour_indicator_position = Math.floor(currentMinute/2)
-  $(".hour_num_current").css("margin-top", hour_indicator_position+"px");
-}, 30000);
+  $(".hour_num_current").css("margin-top", hour_indicator_position+"px")
+}, 30000)
