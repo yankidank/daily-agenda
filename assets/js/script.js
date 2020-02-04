@@ -268,6 +268,7 @@ if (viewMode === "light" || sunriseStored === 0 && viewMode !== "golden" && view
   viewActive = 'golden'
   $("#modeCheck").attr('checked', 'checked')
   $('body').append(goldenCSS)
+  $('body').append(sunriseCSS)
   if (timestamp >= sunrise_minus && timestamp <= sunrise_plus){
     $('body').append(sunriseCSS)
   }

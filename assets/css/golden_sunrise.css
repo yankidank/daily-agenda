@@ -1,3 +1,9 @@
 body.site {
-	background: linear-gradient(-4deg,#000000, #190453, #581167d1, #d6591ead, #c88e37d6, #e9ac66f0);
+	background: linear-gradient(-4deg, #1b1b1b, #02031c, #1c0f41ec, #581167d1, #e05d20ad, #d47f2fbb, #f38a4dfa);
+	background-size: 500% 500%;
+	-webkit-animation: gradientBG 60s ease 1;
+			animation: gradientBG 60s ease 1;
+			animation-timing-function: linear;
+			animation-fill-mode: none;
+			animation-direction: reverse;
 }
