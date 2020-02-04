@@ -3,9 +3,9 @@ body.site {
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(-4deg,#e9ac66f0, #c88e37d6, #d6591ead, #581167d1, #1c0f41ec, #02031c);
-	background-size: 600% 600%;
-	-webkit-animation: gradientBG 35s ease 1;
-			animation: gradientBG 15s ease 1;
+	background-size: 500% 500%;
+	-webkit-animation: gradientBG 42s ease 1;
+			animation: gradientBG 42s ease 1;
 			animation-timing-function: linear;
 			animation-fill-mode: none;
 			animation-direction: reverse;
@@ -27,9 +27,9 @@ body.site {
 }
 .main_wrapper {
 	background:#8d8d8d1e;
-	-webkit-box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
-    -moz-box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
-    box-shadow: 0px 2px 2px 0px rgba(100, 31, 31, 0.38);
+	-webkit-box-shadow: 0px 2px 2px 0px rgba(38, 38, 38, 0.12);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(38, 38, 38, 0.12);
+    box-shadow: 0px 2px 2px 0px rgba(38, 38, 38, 0.12);
 }
 footer {
 	background:#6a69411f;
@@ -55,11 +55,14 @@ footer {
 .hour_num_current {
 	color:#f6ed6d;
 }
-h1, h3 {
-	text-shadow: 0px 3px 3px rgba(49, 49, 49, 0.45);
+h1 {
+	text-shadow: 0px 2px 2px rgba(49, 49, 49, 0.45);
 }
 h2 {
 	color:#fff;
+}
+h3 {
+	text-shadow: 0px 1px 1px rgba(49, 49, 49, 0.45);
 }
 .nav_wrapper {
 	color:#fff;
