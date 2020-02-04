@@ -432,7 +432,7 @@ input:checked + .slider:before {
     max-zoom: 3;
     user-zoom: fixed; */
 }
-@media screen and (max-width: 600px) /* Mobile */ {
+@media screen and (max-width: 500px) /* Mobile */ {
 	.nav_content h3 {
 		margin-left:10px !important;
 	}
@@ -454,10 +454,10 @@ input:checked + .slider:before {
 		min-width: 60%;
 	}
 }
-@media screen and (min-width: 601px) and (max-width: 1080px) {
+@media screen and (min-width: 500px) and (max-width: 960px) {
 	
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 960px) {
 	.nav_wrapper, .main_wrapper, .footer_wrapper {
 		width:1180px;
 	}
