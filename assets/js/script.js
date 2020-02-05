@@ -143,11 +143,10 @@ if (viewMode === "dark"){
 }
 // Move the time marker to the next hour when the hour passes
 setInterval(function() {
+  currentMinute = Number(moment().format('m'))
   if (currentMinute === 0){
     hours.forEach(renderHour)
-    console.log('re-rendered: '+ currentMinute)
   }
-  console.log('same: '+ currentMinute)
 }, 59 * 1000)
 hours.forEach(renderHour)
 function renderHour(item, index) {
