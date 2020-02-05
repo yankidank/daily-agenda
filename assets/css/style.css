@@ -11,6 +11,7 @@ body {
 	background:#f9fbfd;
 	font-size: 1.6rem; /* 16px font size rem conversion*/
 	font-family: 'Lato', sans-serif;
+	-webkit-touch-callout: none;
 }
 .clear {
 	clear:both;
