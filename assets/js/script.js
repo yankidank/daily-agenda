@@ -295,11 +295,27 @@ if (viewMode === "light" || viewMode === "dark"){
 $('#notifications').click(function() {
   // Browser push notifications
 })
-window.setInterval(function(){
+function indicatorPosition(){
+  var hour_indicator_position = Math.floor(currentMinute/2)
   // Update the hour indicator
   if (currentMinute === 0) {
     currentMinute === 1
   }
-  var hour_indicator_position = Math.floor(currentMinute/2)
   $(".hour_num_current").css("margin-top", hour_indicator_position+"px")
+}
+window.setInterval(function(){
+  indicatorPosition()
 }, 30000)
+function onBlur() {
+  indicatorPosition()
+}
+function onFocus(){
+  indicatorPosition()
+}
+if (/*@cc_on!@*/false) { // check for Internet Explorer
+	document.onfocusin = onFocus;
+	document.onfocusout = onBlur;
+} else {
+	window.onfocus = onFocus;
+	window.onblur = onBlur;
+}
